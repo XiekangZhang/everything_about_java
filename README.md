@@ -29,3 +29,29 @@
 3. _Comparator_: comparing(T t)
 4. _Predicate_: boolean test(T t)
 5. _addActionListener_: 
+
+### Java Annotations
+Java Annotation is a tag that represents the metadata attached with class, interface, methods or fields to indicate
+some additional information which can be used by java compiler and JVM.
+#### Build-In Java Annotations used in Java Code
+@Override
+@SuppressWarnings
+@Deprecated
+#### Built-In Java Annotations used in other annotations
+@Target: where the annotation is used. 
+__TYPE__, __FIELD__, __METHOD__, __CONSTRUCTOR__,
+__LOCAL_VARIABLE__, __ANNOTATION_TYPE__, __PARAMETER__\
+@Retention: the level of annotation. __SOURCE__ (not be available in the compiled class), 
+__CLASS__ (.class file, in java compiler not in JVM),
+__RUNTIME__ (java compiler and JVM)\
+@Inherited: mark the annotation to be inherited to subclasses \
+@Documented
+#### Java Custom Annotations
+by using @interface before the annotation name, points should be remembered
+1. Method should not have any throws clauses
+2. Method should return one of the following: primitive data types, String, Class, enum or array
+of these data types
+   
+3. Method should not have any parameter
+4. We should attach @ just before interface keyword to define annotation
+5. It may assign a default value to the method
