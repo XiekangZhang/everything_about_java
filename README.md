@@ -55,3 +55,12 @@ of these data types
 3. Method should not have any parameter
 4. We should attach @ just before interface keyword to define annotation
 5. It may assign a default value to the method
+
+## Java General
+### Java Generics
+1. Type safety: we can hold only a single type of objects in generics.
+Without Generics, we can store any type of objects
+   
+2. Type casting is not required
+3. Compile-Time checking
+
