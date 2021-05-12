@@ -63,4 +63,12 @@ Without Generics, we can store any type of objects
    
 2. Type casting is not required
 3. Compile-Time checking
+### Generic class
+A class that can refer to any type is known as a generic class. 
+* T - Type
+* E - Element
+* K - Key
+* N - Number
+* V - Value
 
+wildcard: ? --> any type
