@@ -1,5 +1,7 @@
 # java_tutorial
 ## Java 8 Tutorial
+
+---
 ### Java Enum
 1. An enumerated type is a reference type with a finite set of possible values,
 2. Enumerated types are classes
@@ -11,7 +13,7 @@
 
 6. the _values()_ method always returns a newly created and initialized array.
 7. EnumMap is much faster than HashMap
-
+---
 ### Lambda Expressions
 1. Lambda expression helps us to write our code in functional style. It provides a clear and concise way to
    implement Single Abstract Method interface by using an expression. It is very useful in collection library in
@@ -22,14 +24,22 @@
 4. An interface which has only **one abstract method** is called **functional interface**.
 5. Java provides an anotation _@FunctionalInterface_, which is used to declare an interface as functional interface.
 6. Java Lambda Expression Syntax: (argument_list) -> {body}
-
+---
 ### functional interface
 1. _Consumer_: void accept(T t), it accepts an input and returns no result.
 2. _Runnable_: void run()
 3. _Comparator_: comparing(T t)
 4. _Predicate_: boolean test(T t)
 5. _addActionListener_: 
-
+---
+### Java Method References
+Method reference is used to refer method of functional interface. Each time when you are using lambda
+expression to just referring a method, you can replace your lambda expression with method reference.
+#### Types of Method References
+* Reference to a static method: ContainingClass::staticMethodName
+* Reference to an Instance Method: ContainingClass::staticMethodName
+* Reference to a Constructor: ClassName::new
+---
 ### Java Annotations
 Java Annotation is a tag that represents the metadata attached with class, interface, methods or fields to indicate
 some additional information which can be used by java compiler and JVM.
@@ -55,8 +65,10 @@ of these data types
 3. Method should not have any parameter
 4. We should attach @ just before interface keyword to define annotation
 5. It may assign a default value to the method
-
+---
 ## Java General
+
+---
 ### Java Generics
 1. Type safety: we can hold only a single type of objects in generics.
 Without Generics, we can store any type of objects
@@ -82,3 +94,5 @@ Unbounded Wildcards can be useful in the following scenarios:
 * When the generic class contains the methods that don't depend on the type parameter
 
 Lower Bounded Wildcards: restrict the unknown type to be a specific type, or a supertype of that type
+
+---
