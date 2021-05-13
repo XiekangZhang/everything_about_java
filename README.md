@@ -25,12 +25,19 @@
 5. Java provides an anotation _@FunctionalInterface_, which is used to declare an interface as functional interface.
 6. Java Lambda Expression Syntax: (argument_list) -> {body}
 ---
-### functional interface
-1. _Consumer_: void accept(T t), it accepts an input and returns no result.
-2. _Runnable_: void run()
-3. _Comparator_: comparing(T t)
-4. _Predicate_: boolean test(T t)
-5. _addActionListener_: 
+### Java functional interface
+An Interface contains exactly one abstract method. It can have any number of default, static methods
+, and methods of object class, but can contain only one abstract method. 
+A functional interface can extends another interface only when it does not have any abstract method.
+#### Java Predefined-Functional Interfaces
+1. _BiConsumer<T, U>_: void accept(T t, U u), accepts two inputs and returns no result
+2. _Consumer<T>_: void accept(T t), it accepts an input and returns no result
+3. _Function<T, R>_: R apply(T t), it applies this function to the given argument
+4. _Predicate<T>_: boolean test(T t), it evaluates this predicate on the given argument
+5. _BiFunction<T, U, R>_: R apply(T t, U u)
+6. _BinaryOperator<T>_: inherits from BiFunction, maxBy(T t, U u), it returns the greater of the two elements <-> minBy()
+7. _BiPredicate<T, U>_: boolean test(T t, U u) \
+[more functional interfaces](https://www.javatpoint.com/java-8-functional-interfaces)
 ---
 ### Java Method References
 Method reference is used to refer method of functional interface. Each time when you are using lambda
@@ -39,6 +46,10 @@ expression to just referring a method, you can replace your lambda expression wi
 * Reference to a static method: ContainingClass::staticMethodName
 * Reference to an Instance Method: ContainingClass::staticMethodName
 * Reference to a Constructor: ClassName::new
+---
+### Java Stream
+allow functional-style operations on the elements and operations performed on a stream does not modify
+its source.
 ---
 ### Java Annotations
 Java Annotation is a tag that represents the metadata attached with class, interface, methods or fields to indicate
