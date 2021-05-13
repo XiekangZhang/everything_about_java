@@ -71,4 +71,14 @@ A class that can refer to any type is known as a generic class.
 * N - Number
 * V - Value
 
+#### Wildcard
 wildcard: ? --> any type
+
+Upper Bound Wildcard: List<Number> vs List<? extends Number>: restrict the unknown type to be 
+a specific type, or a subtype of that type
+
+Unbounded Wildcards can be useful in the following scenarios:
+* When the given method is implemented by using the functionality provided in the Object class
+* When the generic class contains the methods that don't depend on the type parameter
+
+Lower Bounded Wildcards: restrict the unknown type to be a specific type, or a supertype of that type
