@@ -12,7 +12,7 @@
    and _Map_.
 
 6. the _values()_ method always returns a newly created and initialized array.
-7. EnumMap is much faster than HashMap
+7. EnumMap is much faster than HashMap, and EnumMap saves the inserted order.
 ---
 ### Lambda Expressions
 1. Lambda expression helps us to write our code in functional style. It provides a clear and concise way to
@@ -21,7 +21,7 @@
 
 2. The Lambda expression is used to provide the implementation of an **interface** which has functional interface.
 3. Java lambda expression is treated as a function, so compiler does not create .class file
-4. An interface which has only **one abstract method** is called **functional interface**.
+4. An interface which has only **one abstract method** is called **functional interface**. (no signature in front of method)
 5. Java provides an anotation _@FunctionalInterface_, which is used to declare an interface as functional interface.
 6. Java Lambda Expression Syntax: (argument_list) -> {body}
 ---
@@ -49,7 +49,48 @@ expression to just referring a method, you can replace your lambda expression wi
 ---
 ### Java Stream
 allow functional-style operations on the elements and operations performed on a stream does not modify
-its source.
+its source. \
+allMatch(Predicate), anyMatch(Predicate), builder(), collect(Collectors), 
+concat(Stream a, Stream b), (long)count(), distinct(), (Stream)empty(),
+filter(Predicate), findAny(), findFirst(), flatMap(Function<T, Stream>),
+forEach(Consumer), forEachOrdered(Consumer), generate(Supplier), iterate(T, UnaryOperator),
+limit(long), map(Function), max(Comparator), min(Comparator), peek(Consumer),
+reduce(Function), skip(long), sorted(opt(Comparator)), toArray(opt(IntFunction)) 
+[more information](https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html)
+In IntStream, DoubleStream, LongStream there are more specified methods like sum(), 
+summaryStatistics()
+---
+### Java Base64 Encode and Decode
+create encode then use .encode()
+create decode then use .decode()
+---
+### Java Default Methods
+you can ceate default and static method in an interface
+#### Java 8 interfaces vs abstract class
+possible the same, however, you can create a constructor in abstract class but
+not in interfaces
+---
+### Java Collectors
+Collectors is a final class that extends Object class. It provides reduction
+operations, such as accumulating elements into collections, summarizing elements
+according to various criteria etc. 
+* groupingBy(Function, opt(Supplier), opt(Collector))
+* partitioningBy(Predicate, opt(Collector))
+* toMap, toList, toSet ...
+* summarizingInt(ToIntFunction)
+* summarizingLong(ToLongFunction)
+* summarizingDouble(ToDoubleFunction)
+
+[more functions](https://www.javatpoint.com/java-8-collectors)
+
+---
+### Java StringJoiner
+StringJoiner(delimiter, opt(prefix), opt(suffix))
+add(CharSequence), merge(StringJoiner), length()
+---
+### Java Optional Class
+It is a public final class and used to deal with NullPointerException in Java application.
+
 ---
 ### Java Annotations
 Java Annotation is a tag that represents the metadata attached with class, interface, methods or fields to indicate
