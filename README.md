@@ -58,7 +58,19 @@ limit(long), map(Function), max(Comparator), min(Comparator), peek(Consumer),
 reduce(Function), skip(long), sorted(opt(Comparator)), toArray(opt(IntFunction)) 
 [more information](https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html)
 In IntStream, DoubleStream, LongStream there are more specified methods like sum(), 
-summaryStatistics()
+summaryStatistics().
+
+**_Java 8 streams can't be reused. If you want to refer a stream, you have to 
+cast the stream to other collection type._**
+#### Stream Pipeline
+source, intermediate operation(s) and a terminal operation. The intermediate operation
+is lazy. That means, if the terminal operation is missing, the intermediate operation
+will not be executed. The right order is one of the most important aspects of 
+chaining operations in the stream pipeline. Map() operations are usually expensive.
+#### Stream Reduction --> terminal operation
+count, max, min --> predefined methods to reduce stream. Still, you can use reduce()
+and the collect() to create your own reduction mechanism.
+
 ---
 ### Java Base64 Encode and Decode
 create encode then use .encode()

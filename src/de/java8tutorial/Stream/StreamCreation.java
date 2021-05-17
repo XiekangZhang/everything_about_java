@@ -42,9 +42,12 @@ public class StreamCreation {
         IntStream intStream = IntStream.range(1, 3);
         LongStream longStream = LongStream.rangeClosed(1, 3);
         DoubleStream doubleStream = new Random().doubles(3);
+
+        // stream of String
         IntStream streamOfChars = "abc".chars();
         Stream<String> streamOfString = Pattern.compile(", ").splitAsStream("a, b, c");
 
+        // stream of File
         Path path = Paths.get("C:\\file.txt");
         try {
             Stream<String> streamOfStrings = Files.lines(path);
