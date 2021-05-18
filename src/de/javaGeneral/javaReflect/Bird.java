@@ -1,6 +1,7 @@
 package de.javaGeneral.javaReflect;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 
 public class Bird extends Animal{
@@ -55,14 +56,23 @@ public class Bird extends Animal{
             System.out.println(bird2.getName());
             System.out.println(bird3.isWalks());
 
-        } catch (ClassNotFoundException | NoSuchMethodException classNotFoundException) {
+            // info: get and set fields values at runtime
+            // info: return all accessible public fields class and superclasses
+            Field[] fields = birdClass.getFields();
+            System.out.println(fields.length);
+            System.out.println(fields[0].getName());
+            System.out.println(birdClass.getField("CATEGORY").getName());
+
+            // info: getDeclaredFields: the private fields in the class not in superclass
+            Field[] fields1 = birdClass.getDeclaredFields();
+            System.out.println(fields1.length);
+            System.out.println(fields1[0].getName());
+            System.out.println(birdClass.getDeclaredField("walks").getName());
+
+        } catch (ClassNotFoundException | NoSuchMethodException | InvocationTargetException |
+                InstantiationException | IllegalAccessException | NoSuchFieldException
+                classNotFoundException) {
             classNotFoundException.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
         }
     }
 }
