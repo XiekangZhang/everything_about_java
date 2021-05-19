@@ -1,4 +1,4 @@
-package de.javaGeneral.javaReflect;
+package de.javaGeneral.Reflect;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -42,7 +42,7 @@ public class ReflectExample {
 
         // info: create an object if we only know its fully qualified class name
         try {
-            Class<?> claz = Class.forName("de.javaGeneral.javaReflect.Goat");
+            Class<?> claz = Class.forName("de.javaGeneral.Reflect.Goat");
             System.out.println(claz.getCanonicalName());
             System.out.println(claz.getSimpleName());
             System.out.println(claz.getName());
@@ -53,8 +53,8 @@ public class ReflectExample {
 
         // class modifiers
         try {
-            Class<?> goatClass = Class.forName("de.javaGeneral.javaReflect.Goat");
-            Class<?> animalClass = Class.forName("de.javaGeneral.javaReflect.Animal");
+            Class<?> goatClass = Class.forName("de.javaGeneral.Reflect.Goat");
+            Class<?> animalClass = Class.forName("de.javaGeneral.Reflect.Animal");
 
             int goatMods = goatClass.getModifiers();
             int animalMods = animalClass.getModifiers();

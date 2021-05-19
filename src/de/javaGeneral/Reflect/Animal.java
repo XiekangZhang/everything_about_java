@@ -1,4 +1,4 @@
-package de.javaGeneral.javaReflect;
+package de.javaGeneral.Reflect;
 
 public abstract class Animal implements Eating{
     public static String CATEGORY = "domestic";

@@ -1,8 +1,4 @@
-package de.javaGeneral.javaReflect;
-
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
+package de.javaGeneral.Reflect;
 
 public class Bird extends Animal{
     private boolean walks;

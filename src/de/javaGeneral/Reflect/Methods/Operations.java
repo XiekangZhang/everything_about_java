@@ -1,4 +1,4 @@
-package de.javaGeneral.javaReflect.Methods;
+package de.javaGeneral.Reflect.Methods;
 
 public class Operations {
     public double publicSum(int a, double b) {

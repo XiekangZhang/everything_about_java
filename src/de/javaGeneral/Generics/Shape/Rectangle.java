@@ -1,4 +1,4 @@
-package de.javaGeneral.javaGenerics.Shape;
+package de.javaGeneral.Generics.Shape;
 
 public class Rectangle extends Shape{
     @Override

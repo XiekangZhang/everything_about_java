@@ -1,4 +1,4 @@
-package de.javaGeneral.javaGenerics.Wildcards;
+package de.javaGeneral.Generics.Wildcards;
 
 import java.util.ArrayList;
 

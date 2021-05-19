@@ -1,4 +1,4 @@
-package de.javaGeneral.javaGenerics.Shape;
+package de.javaGeneral.Generics.Shape;
 
 import java.util.ArrayList;
 import java.util.List;

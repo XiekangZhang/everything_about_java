@@ -1,8 +1,7 @@
-package de.javaGeneral.javaGenerics;
+package de.javaGeneral.Generics;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 public class TestGenerics2 {
     public static void main(String[] args) {

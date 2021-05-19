@@ -1,4 +1,4 @@
-package de.javaGeneral.javaReflect.Methods;
+package de.javaGeneral.Reflect.Methods;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

@@ -1,4 +1,4 @@
-package de.javaGeneral.javaReflect;
+package de.javaGeneral.Reflect;
 
 public interface Locomotion {
     String getLocomotion();

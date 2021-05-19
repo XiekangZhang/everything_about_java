@@ -1,4 +1,4 @@
-package de.javaGeneral.javaReflect;
+package de.javaGeneral.Reflect;
 
 public class Goat extends Animal implements Locomotion{
     public Goat(String name) {
