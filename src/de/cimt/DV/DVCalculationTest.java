@@ -9,7 +9,7 @@ import java.util.Base64;
 public class DVCalculationTest {
     public static void main(String[] args) throws NoSuchAlgorithmException {
         try {
-            String input = "109539077";
+            String input = "837444369";
             byte[] hashBytes = MessageDigest.getInstance("SHA-1")
                     .digest(input.getBytes(StandardCharsets.UTF_8));
             String hash = DatatypeConverter.printHexBinary(hashBytes);

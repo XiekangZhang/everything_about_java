@@ -22,6 +22,7 @@ public class InOutputStreamExample {
     public static void main(String[] args) throws IOException {
         InOutputStreamExample inOutputStreamExample = new InOutputStreamExample();
         InputStream test = InOutputStreamExample.class.getResourceAsStream("fileTest.txt");
+        System.out.println(test);
         System.out.println(inOutputStreamExample.readFromInputStream(test));
         // warning: open streams should always be closed
         test.close();
