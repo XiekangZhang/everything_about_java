@@ -36,4 +36,63 @@
             <version>2.13.2</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <!-- xsd to java -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxb2-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>xjc</id>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <locale>en</locale>
+                    <!--<xjbSources>
+                        <xjbSource>src/main/resources/global.xjb</xjbSource>
+                    </xjbSources>-->
+                    <sources>
+                        <source>src/main/resources/user.xsd</source>
+                    </sources>
+                    <outputDirectory>${basedir}/src/main/java</outputDirectory>
+                    <clearOutputDir>false</clearOutputDir>
+                </configuration>
+            </plugin>
+
+            <!-- java to xsd -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxb2-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>schemagen</id>
+                        <goals>
+                            <goal>schemagen</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <sources>
+                        <source>src/main/java/jaxb/gen</source>
+                    </sources>
+                    <outputDirectory>src/main/resources</outputDirectory>
+                    <clearOutputDir>false</clearOutputDir>
+                    <transformSchemas>
+                        <transformSchema>
+                            <uri>/jaxb/gen</uri>
+                            <toPrefix>user</toPrefix>
+                            <toFile>user-gen.xsd</toFile>
+                        </transformSchema>
+                    </transformSchemas>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
