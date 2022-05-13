@@ -6,7 +6,7 @@ import java.util.ServiceLoader;
 
 /**
  * The API: use to achieve a goal
- * The SPI: extend and implement to achieve a goal
+ * The SPI: extend and implement to achieve a goal by adding a new JAR file onto the application class path or into an application-specific extension directory
  * <p>
  * Service Provider Interface: An interface or abstract class that defines the contract for the service provider
  * implementation classes
@@ -29,5 +29,6 @@ public class SPI_Tutorial {
         serviceProviders.forEach(messageServiceProvider -> messageServiceProvider.sendMessage("Have a nice Day!"));
 
         System.out.println(Arrays.asList(serviceProviders).stream().count());
+
     }
 }

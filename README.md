@@ -77,7 +77,7 @@ create encode then use .encode()
 create decode then use .decode()
 ---
 ### Java Default Methods
-you can ceate default and static method in an interface
+you can create default and static method in an interface
 #### Java 8 interfaces vs abstract class
 possible the same, however, you can create a constructor in abstract class but
 not in interfaces

@@ -7,7 +7,12 @@ public class MyGen<T> {
         this.obj = obj;
     }
 
-    T getObj() {
+    public T getObj() {
         return obj;
+    }
+
+    public T newInstance(T obj) throws InstantiationException, IllegalAccessException {
+        this.obj = obj;
+        return this.obj;
     }
 }
