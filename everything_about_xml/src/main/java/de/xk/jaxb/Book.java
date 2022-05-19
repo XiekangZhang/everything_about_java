@@ -1,11 +1,14 @@
-package de.XK2.Baeldung;
+package de.xk.jaxb;
 
 import javax.xml.bind.annotation.*;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.Date;
 
 @XmlRootElement(name = "book")
-@XmlType(propOrder = {"id", "name", "date"})
+@XmlType(propOrder = {
+        "id",
+        "name",
+        "date"
+})
 public class Book {
     private Long id;
     private String name;
@@ -46,7 +49,6 @@ public class Book {
         return date;
     }
 
-    @XmlJavaTypeAdapter(DateAdapter.class)
     public void setDate(Date date) {
         this.date = date;
     }
