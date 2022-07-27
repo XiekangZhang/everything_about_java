@@ -12,6 +12,7 @@
     <modules>
         <module>everything_about_xml</module>
         <module>java_basic</module>
+        <module>java_jms</module>
     </modules>
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
