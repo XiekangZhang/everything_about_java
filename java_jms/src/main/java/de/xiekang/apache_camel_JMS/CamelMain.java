@@ -6,17 +6,39 @@ import org.apache.camel.CamelContext;
 import org.apache.camel.component.jms.JmsComponent;
 import org.apache.camel.impl.DefaultCamelContext;
 
-import javax.jms.ConnectionFactory;
+import javax.jms.*;
+import java.util.Enumeration;
 
 public class CamelMain {
 
+    // starting to count the number of messages in a queue
+    // Variant 1 by using QueueBrowser
+    // TODO: code with JMX
+    public int getQueueSize(Session session, Queue queue) {
+        int count = 0;
+        try {
+            QueueBrowser browser = session.createBrowser(queue);
+            Enumeration elems = browser.getEnumeration();
+            while (elems.hasMoreElements()) {
+                elems.nextElement();
+                count++;
+            }
+        } catch (JMSException ex) {
+            ex.printStackTrace();
+        }
+        return count;
+    }
+
     public static void main(String[] args) {
+        // info: transfer message
         CamelContext ctx = new DefaultCamelContext();
         ConnectionFactory connectionFactory = new ActiveMQConnectionFactory();
-        ctx.addComponent("jmsComponent", JmsComponent.jmsComponentAutoAcknowledge(connectionFactory));
+
+        // warning: setting acknowledge mode by runtime
+        ctx.addComponent("jmsComponent", JmsComponent.jmsComponentClientAcknowledge(connectionFactory));
 
         JMSRouteBuilder jmsRouteBuilder = new JMSRouteBuilder();
-
+        
         try {
             ctx.addRoutes(jmsRouteBuilder);
             ctx.start();
