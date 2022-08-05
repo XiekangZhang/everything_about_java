@@ -31,15 +31,12 @@ public class CamelMain {
 
     public static void main(String[] args) {
         // info: transfer message
-        CamelContext ctx = new DefaultCamelContext();
-        ConnectionFactory connectionFactory = new ActiveMQConnectionFactory();
-
-        // warning: setting acknowledge mode by runtime
-        ctx.addComponent("jmsComponent", JmsComponent.jmsComponentClientAcknowledge(connectionFactory));
-
-        JMSRouteBuilder jmsRouteBuilder = new JMSRouteBuilder();
-        
-        try {
+        try (CamelContext ctx = new DefaultCamelContext()) {
+            ConnectionFactory connectionFactory = new ActiveMQConnectionFactory();
+            // warning: setting acknowledge mode by runtime
+            // info: give me a sign if you read it.
+            ctx.addComponent("jmsComponent", JmsComponent.jmsComponentClientAcknowledge(connectionFactory));
+            JMSRouteBuilder jmsRouteBuilder = new JMSRouteBuilder();
             ctx.addRoutes(jmsRouteBuilder);
             ctx.start();
             Thread.sleep(5 * 60 * 1000);
