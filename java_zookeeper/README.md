@@ -1,3 +1,27 @@
+# Distributed Application
+A distributed application can run on multiple systems in a 
+network at a given time (simultaneously) by coordinating among
+themselves to complete a particular task in a fast and 
+efficient manner. 
+
+- Cluster: A group of systems in which a distributed application
+is running
+- Node: each machine running in a cluster
+
+## Benefits of Distributed Applications
+- Reliability
+- Scalability
+- Transparency
+
+## Challenges of Distributed Applications
+- Race condition: Two or more machines trying to perform a 
+particular task, which actually needs to be done only by 
+a single machine at any given time. For example, shared 
+resources should only be modified by a single machine --> 
+solved by ZooKeeper using **failsafe synchronization approach**.
+- Deadlock & Inconsistency --> solved by ZooKeeper using
+**atomicity**.
+
 # ZooKeeper
 This short tutorial is based on [ZooKeeper Homepage](https://zookeeper.apache.org/) and 
 [ZooKeeper Baeldung](https://www.baeldung.com/java-zookeeper).
@@ -20,9 +44,6 @@ Clients connect to a single ZooKeeper server. The client maintains a TCP connect
 which it sends requests, gets responses, gets watch events, and sends heart beats. 
 If the TCP connection to the server breaks, the client will connect to a different server. 
 
-### ZNode vs ephemeral nodes
-- ephemeral nodes will be deleted after the session is closed.
-
 ## ZNode
 ZooKeeper has a hierarchical namespace, much like a distributed file system where it stores 
 coordination data like status information, coordination information, location information, etc. 
@@ -34,7 +55,18 @@ Note: In standalone mode, there's no replication so if ZooKeeper process fails, 
 go down. 
 
 To use a ZooKeeper service, an application must first instantiate an object of ZooKeeper class, 
-which is the de.xiekang.zookeeper.main class of ZooKeeper client library. 
+which is the main class of ZooKeeper client library. 
+
+Every znode in the ZooKeeper data model maintains a **stat**
+structure. A stat provides the metadata of a znode. It consists
+of Version number, Action control list (ACL), Timestamp, and Data length. 
+
+### persistence ZNode vs ephemeral nodes vs Sequential znode
+- persistence znode (default): Persistence znode is alive even after the client is disconnected.
+- ephemeral nodes will be deleted after the session is closed.
+- sequential znode: sequential znodes can be either persistent or ephemeral. When a new znode is created as a 
+sequential znode, then ZooKeeper sets the path of the znode by attaching a 10 digit sequence number to the original
+name. Sequential znodes play an important role in Locking and Synchronization. 
 
 ## Programming ZooKeeper
 ZooKeeper applications are broken into two units. 
@@ -45,7 +77,7 @@ ZooKeeper applications are broken into two units.
 A replicated group of servers in the same application is called a **quorum**, and in replicated
 mode, all servers in the quorum have copies of the same configuration file. 
 
-For replicated mode, a minimum of three servers are required, and it is strongly recommended that
+For replicated mode, a minimum of **three** servers are required, and it is strongly recommended that
 you have an odd number of servers. 
 
 #### zoo.cfg Example
