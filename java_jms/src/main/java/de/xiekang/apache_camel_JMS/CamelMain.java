@@ -1,6 +1,7 @@
 package de.xiekang.apache_camel_JMS;
 
 import de.xiekang.apache_camel_JMS.route.JMSRouteBuilder;
+import de.xiekang.apache_camel_JMS.route.ZookeeperGamePlay;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.camel.CamelContext;
 import org.apache.camel.component.jms.JmsComponent;
@@ -23,8 +24,9 @@ public class CamelMain {
             // info: give me a sign if you read it.
 
             ctx.addComponent("jmsComponent", JmsComponent.jmsComponentClientAcknowledge(connectionFactory));
-            JMSRouteBuilder jmsRouteBuilder = new JMSRouteBuilder();
-            ctx.addRoutes(jmsRouteBuilder);
+            //JMSRouteBuilder jmsRouteBuilder = new JMSRouteBuilder();
+            ZookeeperGamePlay zookeeperGamePlay = new ZookeeperGamePlay();
+            ctx.addRoutes(zookeeperGamePlay);
             ctx.start();
             Thread.sleep(10 * 60 * 1000);
             ctx.stop();

@@ -27,6 +27,7 @@ public class JMSRouteBuilder extends RouteBuilder {
                         System.err.println(exchange.getIn().getBody(String.class));
                     }
                 })
+                .to("zookeeper://localhost:2181/bbbbbb?create=true&createMode=PERSISTENT")
                 .log( String.valueOf(simple("${in.body}")));
         /*//initialize Timer
         from("timer://testTimer?period=2000&repeatCount=5")
