@@ -1,19 +1,14 @@
 package de.xiekang.apache_camel_JMS.route;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import de.xiekang.apache_camel_JMS.bean.StartDatum;
-import org.apache.camel.AggregationStrategy;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.zookeeper.CreateMode;
-import org.apache.zookeeper.KeeperException;
-import org.apache.zookeeper.ZooDefs;
-import org.apache.zookeeper.ZooKeeper;
 
-import java.io.*;
+import java.io.StringWriter;
 import java.text.SimpleDateFormat;
-import java.util.*;
-import java.util.concurrent.TimeoutException;
+import java.util.Date;
 
 /**
  * This script is about using ZooKeeper Master to control the running instance &
@@ -32,7 +27,8 @@ import java.util.concurrent.TimeoutException;
 
 public class ZookeeperGamePlay extends RouteBuilder {
     static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yy HH:mm:ss");
-    StartDatum startDatum = new StartDatum();
+    StartDatum startDatum = null;
+    ObjectMapper objectMapper = new ObjectMapper();
 
     public static final long period = 1000;
 
@@ -49,10 +45,35 @@ public class ZookeeperGamePlay extends RouteBuilder {
                     @Override
                     public void process(Exchange exchange) throws Exception {
                         try {
-
                             System.out.println("Starting get the date from existing persistent node");
-
+                            StringWriter stringWriter = new StringWriter();
                             byte[] bytes = (byte[]) exchange.getIn().getBody();
+                            if (bytes == null || bytes.length == 0) {
+                                startDatum = new StartDatum();
+                                startDatum.setStartDatum_GUEST(0L);
+                                startDatum.setStartDatum_HOST(0L);
+                            } else {
+                                startDatum = objectMapper.readValue(bytes, startDatum.getClass());
+                                Thread.sleep(10000);
+                                startDatum.setStartDatum_GUEST(new Date().getTime());
+                                startDatum.setStartDatum_HOST(new Date().getTime());
+                            }
+                            objectMapper.writeValue(stringWriter, startDatum);
+                            System.out.println(startDatum.toString());
+                            exchange.getIn().setBody(stringWriter.toString());
+                        } catch (Throwable t) {
+                            t.printStackTrace();
+                        }
+                    }
+                })
+                .to("zookeeper://localhost:2181/lastRunDate?create=true&createMode=PERSISTENT");
+    }
+}
+
+
+// for me as backup
+// info: version 2 serialization with java native code
+                            /*byte[] bytes = (byte[]) exchange.getIn().getBody();
                             if (bytes == null || bytes.length == 0) {
                                 startDatum.setStartDatum_HOST(0L);
                                 startDatum.setStartDatum_GUEST(0L);
@@ -72,7 +93,9 @@ public class ZookeeperGamePlay extends RouteBuilder {
                             objectOutputStream.flush();
                             byte[] bytes1 = byteArrayOutputStream.toByteArray();
                             objectOutputStream.close();
-                            exchange.getIn().setBody(bytes1);
+                            exchange.getIn().setBody(bytes1);*/
+
+// info: version 1 native code
                             /*byte[] b = (byte[]) exchange.getIn().getBody();
                             String body = b == null || b.length == 0 ? null : new String(b);
                             System.out.println("body: " + body);
@@ -88,11 +111,3 @@ public class ZookeeperGamePlay extends RouteBuilder {
                             startDatum_HOST = simpleDateFormat.format(new Date());
                             startDatum_GUEST = simpleDateFormat.format(new Date());
                             exchange.getIn().setBody("startDatum_HOST: " + startDatum_HOST + "\nstartDatum_GUEST: " + startDatum_GUEST);*/
-                        } catch (Throwable t) {
-                            t.printStackTrace();
-                        }
-                    }
-                })
-                .to("zookeeper://localhost:2181/lastRunDate?create=true&createMode=PERSISTENT");
-    }
-}

@@ -1,9 +1,6 @@
 package de.xiekang.apache_camel_JMS.bean;
 
-import java.io.Serializable;
-
-public class StartDatum implements Serializable {
-    private static long serialVersionUID = 1L;
+public class StartDatum {
     private long startDatum_HOST;
     private long startDatum_GUEST;
 
