@@ -1,4 +1,4 @@
-package de.javaAPIs.LangAPI.LangClassLoader;
+package javaAPIs.LangAPI.LangClassLoader;
 
 import com.sun.javafx.binding.Logging;
 

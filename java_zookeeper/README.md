@@ -91,3 +91,5 @@ to a leader.
 - server.X: it lists the servers that make up the ZooKeeper service. 
   - server.1=zoo1:2888:3888 : a ZooKeeper server uses the former port to connect followers to the
 leader; 3888 is for leader election. 
+
+[create cluster on one machine & several machines](https://kumarchetan.com/blog/2016/12/07/how-to-setup-and-run-multiple-zookeeper-instances-on-one-box/)

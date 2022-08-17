@@ -1,9 +1,7 @@
-package de.javaAPIs.LangAPI;
+package javaAPIs.LangAPI;
 
-import de.javaAPIs.LangAPI.LangClassLoader.ClassLoaderTest;
 import de.javaGeneral.Generics.MyGen;
-
-import java.lang.Boolean;
+import javaAPIs.LangAPI.LangClassLoader.ClassLoaderTest;
 
 public class javaLangAPI {
     public static void BooleanTest() {
