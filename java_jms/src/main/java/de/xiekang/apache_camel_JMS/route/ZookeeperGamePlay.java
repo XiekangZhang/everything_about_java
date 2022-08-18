@@ -9,7 +9,6 @@ import org.apache.camel.builder.RouteBuilder;
 import java.io.StringWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 /**
  * This script is about using ZooKeeper Master to control the running instance &
  * ZooKeeper Persistent Node to save the startDatum.
@@ -27,7 +26,7 @@ import java.util.Date;
 
 public class ZookeeperGamePlay extends RouteBuilder {
     static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yy HH:mm:ss");
-    StartDatum startDatum = null;
+    StartDatum startDatum = new StartDatum();
     ObjectMapper objectMapper = new ObjectMapper();
 
     public static final long period = 1000;
@@ -35,7 +34,7 @@ public class ZookeeperGamePlay extends RouteBuilder {
     @Override
     public void configure() throws Exception {
         // info: Consumer
-        from("zookeeper-master:localhost:timer:repeatedTimer?period=" + period + "&repeatCount=3&delay=0")
+        from("zookeeper-master:localhost:timer:repeatedTimer?period=" + period + "&repeatCount=-1&delay=0")
                 .to("direct:getDate");
 
         from("direct:getDate")

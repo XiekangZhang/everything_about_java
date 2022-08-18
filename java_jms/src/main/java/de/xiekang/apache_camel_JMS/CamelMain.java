@@ -1,15 +1,12 @@
 package de.xiekang.apache_camel_JMS;
 
-import de.xiekang.apache_camel_JMS.route.JMSRouteBuilder;
 import de.xiekang.apache_camel_JMS.route.ZookeeperGamePlay;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.camel.CamelContext;
 import org.apache.camel.component.jms.JmsComponent;
 import org.apache.camel.impl.DefaultCamelContext;
 
-import javax.jms.*;
-import java.util.Enumeration;
-
+import javax.jms.ConnectionFactory;
 public class CamelMain {
 
     // starting to count the number of messages in a queue

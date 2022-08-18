@@ -11,10 +11,11 @@ has an independent lifecycle, meaning it can be started, stopped and removed ind
 Usually, a bundle is a **.jar** with a **MANIFEST.MF** containing some OSGi-specific headers.
 
 ## Installation & First application
-Karaf Version & Java Version Support
-4.4.x 11+  
-4.3.x 11+  
-4.2.x 8/9/10/11
+| Karaf Version | Java Version Support |
+|--|--|
+| 4.4.x | 11+ | 
+| 4.3.x | 11+ | 
+| 4.2.x | 8/9/10/11 |
 
 For this learning we use 4.2.16, which the latest version supporting java 8. 
 To start karaf you can use _bin/karaf start_.
