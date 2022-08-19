@@ -1,13 +1,9 @@
 package de.xiekang.apache_camel_JMS.route;
 
 import de.xiekang.apache_camel_JMS.WhitespotAggregationStrategy;
-import org.apache.camel.AggregationStrategy;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.component.zookeepermaster.policy.MasterRoutePolicy;
-
-import java.util.Date;
 
 public class JMSRouteBuilder extends RouteBuilder {
     WhitespotAggregationStrategy whitespotAggregationStrategy = new WhitespotAggregationStrategy();

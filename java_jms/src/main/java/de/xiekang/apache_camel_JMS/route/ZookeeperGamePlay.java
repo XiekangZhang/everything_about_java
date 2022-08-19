@@ -5,6 +5,7 @@ import de.xiekang.apache_camel_JMS.bean.StartDatum;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.component.zookeeper.policy.ZooKeeperRoutePolicy;
 
 import java.io.StringWriter;
 import java.text.SimpleDateFormat;
@@ -28,13 +29,19 @@ public class ZookeeperGamePlay extends RouteBuilder {
     static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yy HH:mm:ss");
     StartDatum startDatum = new StartDatum();
     ObjectMapper objectMapper = new ObjectMapper();
+    // info: new way to emulate ZooKeeperMaster
 
     public static final long period = 1000;
 
     @Override
     public void configure() throws Exception {
-        // info: Consumer
-        from("zookeeper-master:localhost:timer:repeatedTimer?period=" + period + "&repeatCount=-1&delay=0")
+        ZooKeeperRoutePolicy zooKeeperRoutePolicy = new ZooKeeperRoutePolicy("zookeeper:localhost:" + 2181 + "/lastRunDate", 1);
+        //from("zookeeper-master:localhost:timer:repeatedTimer?period=" + period + "&repeatCount=-1&delay=0")
+        //        .to("direct:getDate");
+
+        from("timer:repeatedTimer?period=" + period + "&repeatCount=-1&delay=0")
+                .routePolicy(zooKeeperRoutePolicy)
+                .id("Master")
                 .to("direct:getDate");
 
         from("direct:getDate")
