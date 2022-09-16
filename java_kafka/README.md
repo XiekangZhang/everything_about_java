@@ -25,7 +25,10 @@ __Kafka Core concept:__
     - acks=1: producer will wait for the leader's acknowledgement. Limited data loss.
     - acks=all: the acknowledgment is done by both the leader and its followers. No data loss.
 - Consumer
-  - Consumer vs Consumer Groups \
+  - Consumer vs Consumer Groups
+  - A consumer group is a group of consumers that share the same group id. 
+    When a topic is consumed by consumers in the same group, every record
+    will be delivered to only one consumer.\
 ![Kafka Consumer Groups](https://static.javatpoint.com/tutorial/kafka/images/apache-kafka-consumer-and-consumer-groups2.png)
 ![Kafka Consumer Groups2](https://static.javatpoint.com/tutorial/kafka/images/apache-kafka-consumer-and-consumer-groups3.png)
   - Read data from committed offset (could be understood as a bookmark)
@@ -62,7 +65,6 @@ __Kafka Core API's:__
 
 __Kafka disadvantages:__
 - Message tweaking issues: it works well if the message does not need to change
-- 
 
 __Kafka Key Features:__
 - Persistent messaging: Apache Kafka is built with __O(1)__ Disc Structures
