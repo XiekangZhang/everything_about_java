@@ -28,6 +28,9 @@ public class FeedToKafka {
                 XmlReader inputReader = new XmlReader(feedSource);
                 feed = input.build(inputReader);
             }
+            //System.out.println(feed);
+            //feed.getPublishedDate();
+            //feed.getCategories();
             stringWriter.append("title: ").append(feed.getTitle()).append(" , \n");
             stringWriter.append("feed type: ").append(feed.getFeedType()).append(" , \n");
             stringWriter.append("link: ").append(feed.getLink()).append(" , \n");
@@ -108,3 +111,4 @@ public class FeedToKafka {
         feed.producerMessage(msg, server, topic);
     }
 }
+// info: java -jar target/java_kafka-1.0-jar-with-dependencies.jar -u https://feeds.feedblitz.com/baeldung -s 34.159.19.237:9092
