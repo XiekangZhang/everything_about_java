@@ -16,6 +16,8 @@
         <module>java_zookeeper</module>
         <module>java_karaf</module>
         <module>java_kafka</module>
+        <module>java_log4j</module>
+        <module>apache_camel_3</module>
     </modules>
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
