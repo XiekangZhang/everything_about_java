@@ -1,4 +1,4 @@
-package de.xiekang.db;
+package de.xiekang.web_tutorial.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,11 +15,14 @@ public class DBConnection {
         this.DBConfiguration = new DBConfiguration(TYPE, SERVER, PORT, USER, PASSWORD);
         System.out.println("Starting connecting database.....");
         try {
+            Class.forName("org.postgresql.Driver");
             this.connection = DriverManager.getConnection(DBConfiguration.getJdbcURL(),
                     DBConfiguration.getUser(),
                     DBConfiguration.getPassword());
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
     public void DBClose() {

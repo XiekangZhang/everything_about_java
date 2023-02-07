@@ -1,11 +1,12 @@
-package de.xiekang.db;
+package de.xiekang.web_tutorial.db;
 
-import de.xiekang.model.User;
+import de.xiekang.web_tutorial.model.User;
 
 import java.lang.reflect.Field;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -18,6 +19,14 @@ public class DBUtils {
     private DBConnection connection;
 
     public DBUtils(DBConnection connection) {
+        this.connection = connection;
+    }
+
+    public DBConnection getConnection() {
+        return connection;
+    }
+
+    public void setConnection(DBConnection connection) {
         this.connection = connection;
     }
 
@@ -59,8 +68,6 @@ public class DBUtils {
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            this.connection.DBClose();
         }
     }
 
@@ -93,21 +100,25 @@ public class DBUtils {
         return query.toString();
     }
 
-    public void showUsers(String table) {
+    public List<User> showUsers(String table) {
         String query = showUsersQuery(table);
+        List<User> users = new ArrayList<>();
 
         System.out.println(query);
         try (PreparedStatement statement = this.connection.getConnection().prepareStatement(query)) {
             ResultSet resultSet = statement.executeQuery();
-
-            /*while (resultSet.next()) {
+            User user = null;
+            while (resultSet.next()) {
+                user = new User();
                 System.out.println("Email: "+ resultSet.getString("email"));
-            }*/
+                user.setEmail(resultSet.getString("email"));
+                user.setPassword(resultSet.getString("password"));
+                users.add(user);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            this.connection.DBClose();
         }
+        return users;
     }
 
     private String showUsersQuery(String table) {

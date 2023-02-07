@@ -1,4 +1,4 @@
-package de.xiekang.db;
+package de.xiekang.web_tutorial.db;
 
 /**
  * @author XZ

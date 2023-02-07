@@ -1,4 +1,4 @@
-package de.xiekang.model;
+package de.xiekang.web_tutorial.model;
 
 import java.sql.Timestamp;
 
