@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/java_tutorial.iml" filepath="$PROJECT_DIR$/java_tutorial.iml" />
+      <module fileurl="file://$USER_HOME$/AppData/Local/JetBrains/Fleet/backend/426u1hufihpmp3kehim4/external_build_system/everything_about_java.7c1753/modules/everything_about_java.iml" filepath="$USER_HOME$/AppData/Local/JetBrains/Fleet/backend/426u1hufihpmp3kehim4/external_build_system/everything_about_java.7c1753/modules/everything_about_java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java_jms/java_jms.iml" filepath="$PROJECT_DIR$/java_jms/java_jms.iml" />
     </modules>
   </component>
 </project>

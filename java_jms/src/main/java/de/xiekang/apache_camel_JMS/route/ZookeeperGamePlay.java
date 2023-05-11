@@ -36,6 +36,7 @@ public class ZookeeperGamePlay extends RouteBuilder {
     @Override
     public void configure() throws Exception {
         ZooKeeperRoutePolicy zooKeeperRoutePolicy = new ZooKeeperRoutePolicy("zookeeper:localhost:" + 2181 + "/lastRunDate", 1);
+        final int[] flag = {1};
         //from("zookeeper-master:localhost:timer:repeatedTimer?period=" + period + "&repeatCount=-1&delay=0")
         //        .to("direct:getDate");
 
@@ -47,31 +48,49 @@ public class ZookeeperGamePlay extends RouteBuilder {
         from("direct:getDate")
                 // todo: on possible to add try/exception?
                 .pollEnrich("zookeeper://localhost:2181/lastRunDate?repeat=true&timeout=100", 100)
+                .doTry()
                 .process(new Processor() {
                     @Override
                     public void process(Exchange exchange) throws Exception {
-                        try {
-                            System.out.println("Starting get the date from existing persistent node");
-                            StringWriter stringWriter = new StringWriter();
-                            byte[] bytes = (byte[]) exchange.getIn().getBody();
-                            if (bytes == null || bytes.length == 0) {
-                                startDatum = new StartDatum();
-                                startDatum.setStartDatum_GUEST(0L);
-                                startDatum.setStartDatum_HOST(0L);
-                            } else {
-                                startDatum = objectMapper.readValue(bytes, startDatum.getClass());
-                                Thread.sleep(10000);
-                                startDatum.setStartDatum_GUEST(new Date().getTime());
-                                startDatum.setStartDatum_HOST(new Date().getTime());
+                        int random = (int) Math.round(Math.random() * 10);
+                        StringWriter stringWriter = new StringWriter();
+                        System.err.println(random);
+                        exchange.getIn().setHeader("test", "bbbbbb");
+                        if (random <= 6 || flag[0] == 1) {
+                            flag[0] = 0;
+                            try {
+                                System.out.println("Starting get the date from existing persistent node");
+                                byte[] bytes = (byte[]) exchange.getIn().getBody();
+                                if (bytes == null || bytes.length == 0) {
+                                    startDatum = new StartDatum();
+                                    startDatum.setStartDatum_GUEST(0L);
+                                    startDatum.setStartDatum_HOST(0L);
+                                } else {
+                                    startDatum = objectMapper.readValue(bytes, startDatum.getClass());
+                                    Thread.sleep(10000);
+                                    startDatum.setStartDatum_GUEST(new Date().getTime());
+                                    startDatum.setStartDatum_HOST(new Date().getTime());
+                                }
+                                objectMapper.writeValue(stringWriter, startDatum);
+                                System.out.println("updated: " + startDatum.toString());
+                                exchange.getIn().setBody(stringWriter.toString());
+                            } catch (Throwable t) {
+                                t.printStackTrace();
                             }
-                            objectMapper.writeValue(stringWriter, startDatum);
-                            System.out.println(startDatum.toString());
-                            exchange.getIn().setBody(stringWriter.toString());
-                        } catch (Throwable t) {
-                            t.printStackTrace();
+                        } else {
+                            try {
+                                objectMapper.writeValue(stringWriter, startDatum);
+                                System.out.println("old: " + startDatum.toString());
+                                exchange.getIn().setBody(stringWriter.toString());
+                                throw new RuntimeException("Error happens");
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
                 })
+                .to("zookeeper://localhost:2181/lastRunDate?create=true&createMode=PERSISTENT")
+                .doCatch(Exception.class)
                 .to("zookeeper://localhost:2181/lastRunDate?create=true&createMode=PERSISTENT");
     }
 }

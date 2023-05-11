@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<Configuration name="RollingBuilder">
+    <Appenders>
+        <CONSOLE name="Stdout" target="SYSTEM_ERR">
+            <PatternLayout pattern="%d [%t] %-5level: %msg%n%throwable"/>
+        </CONSOLE>
+        <RollingFile name="rolling" fileName="target/rolling.log"
+                     filePattern="target/archive/rolling-%d{MM-dd-yy}-%i.log.gz">
+            <PatternLayout pattern="%d [%t] %-5level: %msg%n"/>
+            <Policies>
+                <CronTriggeringPolicy schedule="0 0 0 * * ?"/>
+                <SizeBasedTriggeringPolicy size="2 kb"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5" min="1" fileIndex="max" compressionLevel="0"/>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="log4jexample3" level="TRACE" additivity="false">
+            <AppenderRef ref="rolling"/>
+        </Logger>
+        <Root level="TRACE">
+            <AppenderRef ref="Stdout"/>
+        </Root>
+    </Loggers>
+</Configuration>
