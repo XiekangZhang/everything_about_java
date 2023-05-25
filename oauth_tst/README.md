@@ -45,11 +45,14 @@ process and enable SSO scenarios.
   authorization framework.
 
 ## OAuth 2.0 Overview
+![OAuth 2.0 normal process](https://assets.digitalocean.com/articles/oauth/abstract_flow.png)
+![OAuth 2.0 other process](https://www.baeldung.com/wp-content/uploads/2019/07/bael-1239-image-simple-1-1024x858-768x644.png)
+
 Roles
 * Resource Owner
-* Resource Server
+* Resource Server: this is essentially the REST API, which we ultimately want to be able to consume
 * Client
-* Authorization Server
+* Authorization Server: an application that issues tokens for authorization
 
 Authorization Grant Types: how a client gets permission to use the resource owner's data
 * Authorization Code: a web application, a native application, or a single-page application --> PKCE
@@ -67,3 +70,5 @@ Authorization Code Grant FLow
 * With the token in hand, the application makes its request to the API. It can ask the authorization server to verify
   the token using its /introspect endpoint. Or, if the token is self-contained, the resource server can optimize by locally
   verifying the token's signature, as is the case with JWT.
+
+## 
