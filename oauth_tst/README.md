@@ -1,5 +1,6 @@
 # OAuth2.0
-[Baeldung](https://www.baeldung.com/java-ee-oauth2-implementation)
+[Spring Boot Documentation](https://docs.spring.io/spring-security-oauth2-boot/docs/2.7.x/reference/pdf/spring-security-oauth2-boot-reference.pdf)
+[Tutorial](https://github.com/eugenp/tutorials/tree/master/security-modules/oauth2-framework-impl)
 ## Getting Ready
 Every OAuth 2.0 service will require that you first register a new application, which also typically requires that you
 first sign up as a developer with the service. After registering the application, you'll be given a client_id and a
@@ -70,5 +71,3 @@ Authorization Code Grant FLow
 * With the token in hand, the application makes its request to the API. It can ask the authorization server to verify
   the token using its /introspect endpoint. Or, if the token is self-contained, the resource server can optimize by locally
   verifying the token's signature, as is the case with JWT.
-
-## 
