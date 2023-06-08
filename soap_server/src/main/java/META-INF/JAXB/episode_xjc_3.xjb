@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bindings version="3.0" xmlns="https://jakarta.ee/xml/ns/jaxb">
+  <!--
+
+Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
+Siehe https://eclipse-ee4j.github.io/jaxb-ri 
+Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
+Generiert: 2023.06.08 um 04:57:08 PM CEST 
+
+  -->
+  <bindings scd="x-schema::tns" xmlns:tns="/de/xiekang/model">
+    <schemaBindings map="false">
+      <package name="de.xiekang.model"/>
+    </schemaBindings>
+    <bindings scd="~tns:UserRequest">
+      <class ref="de.xiekang.model.UserRequest"/>
+    </bindings>
+    <bindings scd="~tns:UserResponse">
+      <class ref="de.xiekang.model.UserResponse"/>
+    </bindings>
+  </bindings>
+</bindings>
+

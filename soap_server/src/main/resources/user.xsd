@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="/de/xiekang/model"
+        xmlns:userns="/de/xiekang/model"
+        elementFormDefault="qualified">
+    <element name="userRequest" type="userns:UserRequest"></element>
+    <element name="userResponse" type="userns:UserResponse"></element>
+
+    <complexType name="UserRequest">
+        <sequence>
+            <element name="id" type="int" />
+            <element name="name" type="string" />
+        </sequence>
+    </complexType>
+    <complexType name="UserResponse">
+        <sequence>
+            <element name="id" type="int"></element>
+            <element name="name" type="string"></element>
+            <element name="gender" type="string"></element>
+            <element name="created" type="dateTime"></element>
+        </sequence>
+    </complexType>
+</schema>

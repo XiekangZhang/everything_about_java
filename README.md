@@ -22,7 +22,7 @@
 2. The Lambda expression is used to provide the implementation of an **interface** which has functional interface.
 3. Java lambda expression is treated as a function, so compiler does not create .class file
 4. An interface which has only **one abstract method** is called **functional interface**. (no signature in front of method)
-5. Java provides an anotation _@FunctionalInterface_, which is used to declare an interface as functional interface.
+5. Java provides an annotation _@FunctionalInterface_, which is used to declare an interface as functional interface.
 6. Java Lambda Expression Syntax: (argument_list) -> {body}
 ---
 ### Java functional interface

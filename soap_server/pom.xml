@@ -33,9 +33,14 @@
             <artifactId>jaxws-rt</artifactId>
             <version>4.0.0</version>
         </dependency>
-    </dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.10.0-M1</version>
+            <scope>test</scope>
+        </dependency>
 
-    <!-- create java code based on wsdl -->
+    </dependencies>
     <build>
         <plugins>
             <plugin>
@@ -46,7 +51,6 @@
                     <release>11</release>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>com.sun.xml.ws</groupId>
                 <artifactId>jaxws-maven-plugin</artifactId>
@@ -59,7 +63,44 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <wsdLocation></wsdLocation>
+                    <wsdlLocation>http://localhost:8080/user?wsdl</wsdlLocation>
+                    <!--wsdlDirectory>http://localhost:8080/user?wsdl</wsdlDirectory-->
+                    <wsdlDirectory>${project.basedir}/src/main/resources/</wsdlDirectory>
+                    <packageName>de.xiekang.client</packageName>
+                    <extension>true</extension>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.sun.xml.ws</groupId>
+                        <artifactId>jaxws-tools</artifactId>
+                        <version>4.0.0-M4</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+            <!-- xsd to java classes -->
+            <!-- https://mvnrepository.com/artifact/org.apache.maven/maven-plugin-api -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxb2-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>xjc</id>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <xjbSources>
+                        <xjbSource>${project.basedir}/src/main/resources/global.xjb</xjbSource>
+                    </xjbSources>
+                    <sources>
+                        <source>${project.basedir}/src/main/resources/user.xsd</source>
+                    </sources>
+                    <outputDirectory>${basedir}/src/main/java/</outputDirectory>
+                    <clearOutputDir>false</clearOutputDir>
                 </configuration>
             </plugin>
         </plugins>

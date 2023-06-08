@@ -16,3 +16,6 @@ messages, and how to invoke the web service.
 ``<portType><operation><input/><output/><fault/> ``
 ``<binding/> it provides protocol and data format details for each portType``
 ``<service><port/>``
+
+## SOAP Message
+optional SOAP header --> Required SOAP body --> Optional SOAP attachments (deliver like movie in bytes)

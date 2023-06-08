@@ -19,6 +19,7 @@
         <module>java_log4j</module>
         <module>apache_camel_3</module>
         <module>oauth_tst</module>
+        <module>oauth_impl</module>
         <module>soap_server</module>
     </modules>
     <properties>

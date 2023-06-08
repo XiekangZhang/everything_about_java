@@ -1,7 +1,0 @@
-<?xml version="1.0" ?>
-<Configuration name="RollingBuilder">
-    <Loggers>
-        <Root level="TRACE">
-        </Root>
-    </Loggers>
-</Configuration>
