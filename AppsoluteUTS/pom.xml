@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>de.telefonica.talend</groupId>
+    <artifactId>AppsoluteUTS</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/jakarta.xml.ws/jakarta.xml.ws-api -->
+        <dependency>
+            <groupId>jakarta.xml.ws</groupId>
+            <artifactId>jakarta.xml.ws-api</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/jakarta.inject/jakarta.inject-api -->
+        <dependency>
+            <groupId>jakarta.inject</groupId>
+            <artifactId>jakarta.inject-api</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.sun.xml.ws/jaxws-rt -->
+        <dependency>
+            <groupId>com.sun.xml.ws</groupId>
+            <artifactId>jaxws-rt</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.10.0-M1</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.1</version>
+                <configuration>
+                    <release>11</release>
+                </configuration>
+            </plugin>
+            <!--plugin>
+                <groupId>com.sun.xml.ws</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>4.0.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <wsdlLocation>appsolute.wsdl</wsdlLocation>
+                    <wsdlDirectory>${project.basedir}/src/main/resources/</wsdlDirectory>
+                    <packageName>de.telefonica.talend.services</packageName>
+                    <extension>true</extension>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.sun.xml.ws</groupId>
+                        <artifactId>jaxws-tools</artifactId>
+                        <version>4.0.0-M4</version>
+                    </dependency>
+                </dependencies>
+            </plugin-->
+
+            <!-- xsd to java classes -->
+            <!-- https://mvnrepository.com/artifact/org.apache.maven/maven-plugin-api -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxb2-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>xjc</id>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <xjbSources>
+                        <xjbSource>${project.basedir}/src/main/resources/global.xjb</xjbSource>
+                    </xjbSources>
+                    <sources>
+                        <source>${project.basedir}/src/main/resources/appsolute.xsd</source>
+                    </sources>
+                    <outputDirectory>${basedir}/src/main/java/</outputDirectory>
+                    <clearOutputDir>false</clearOutputDir>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

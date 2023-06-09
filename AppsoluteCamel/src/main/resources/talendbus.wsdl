@@ -1,0 +1,129 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:tb="http://www.telefonica.de/service/talendbus"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="APT_Event"
+                  targetNamespace="http://www.telefonica.de/service/talendbus">
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                    xmlns:tb="http://www.telefonica.de/service/talendbus"
+                    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" elementFormDefault="qualified"
+                    targetNamespace="http://www.telefonica.de/service/talendbus">
+            <xsd:element abstract="true" name="AbstractEvent" nillable="true" type="tb:eventContainerType"/>
+            <xsd:element name="Event" substitutionGroup="tb:AbstractEvent">
+                <xsd:complexType>
+                    <xsd:complexContent>
+                        <xsd:extension base="tb:eventContainerType">
+                            <xsd:attribute name="source" type="xsd:string"/>
+                            <xsd:attribute name="destination" type="xsd:string"/>
+                        </xsd:extension>
+                    </xsd:complexContent>
+                </xsd:complexType>
+            </xsd:element>
+            <!--
+                        <xsd:element name="EQTEvent" type="tb:eventContainerType" substitutionGroup="tb:AbstractEvent"/>
+                        <xsd:element name="APTEvent" type="tb:eventContainerType" substitutionGroup="tb:AbstractEvent"/>
+                        <xsd:element name="UTSEvent" type="tb:eventContainerType" substitutionGroup="tb:AbstractEvent"/>
+                         -->
+            <xsd:complexType abstract="true" name="eventContainerType">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="1" name="type" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" name="version" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="0" name="id" type="xsd:string"/>
+                    <xsd:any maxOccurs="1" minOccurs="1" namespace="##other" processContents="skip"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="Operations">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element maxOccurs="unbounded" minOccurs="0" name="operation">
+                            <xsd:complexType>
+                                <xsd:attribute name="type" type="xsd:string" use="required"/>
+                                <xsd:attribute name="version" type="xsd:string" use="required"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="TalendStatus">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="ErrorCode" type="xsd:int"/>
+                        <xsd:element name="Status" type="tb:statusType"/>
+                        <xsd:element maxOccurs="1" minOccurs="0" name="Id" type="xsd:string"/>
+                        <xsd:element maxOccurs="1" minOccurs="0" name="ErrorDescription" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="message">
+                <xsd:complexType>
+                    <xsd:simpleContent>
+                        <xsd:extension base="xsd:string">
+                            <xsd:attribute name="source" type="tb:sourceType" use="required"/>
+                            <xsd:attribute name="prio" type="tb:prioType" use="required"/>
+                        </xsd:extension>
+                    </xsd:simpleContent>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="messages">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element maxOccurs="unbounded" minOccurs="0" ref="tb:message"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:simpleType name="sourceType">
+                <xsd:restriction base="xsd:string">
+                    <xsd:enumeration value="Request"/>
+                    <xsd:enumeration value="System"/>
+                    <xsd:enumeration value="Validation"/>
+                    <xsd:enumeration value="Transformation"/>
+                    <xsd:enumeration value="Transport"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+            <xsd:simpleType name="prioType">
+                <xsd:restriction base="xsd:string">
+                    <xsd:enumeration value="DEBUG"/>
+                    <xsd:enumeration value="INFO"/>
+                    <xsd:enumeration value="WARN"/>
+                    <xsd:enumeration value="ERROR"/>
+                    <xsd:enumeration value="FATAL"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+            <xsd:simpleType name="statusType">
+                <xsd:restriction base="xsd:string">
+                    <xsd:enumeration value="SUCCESS"/>
+                    <xsd:enumeration value="SUCCESS_WITH_WARNINGS"/>
+                    <xsd:enumeration value="ERROR"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="APTEventRequest">
+        <wsdl:part element="tb:Event" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="APTEventResponse">
+        <wsdl:part element="tb:TalendStatus" name="parameters"></wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="APTTalendBusEventPortType">
+        <wsdl:operation name="APTEventOperation">
+            <wsdl:input message="tb:APTEventRequest"></wsdl:input>
+            <wsdl:output message="tb:APTEventResponse"></wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="APTTalendEventBinding" type="tb:APTTalendBusEventPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="APTEventOperation">
+            <soap:operation soapAction="http://www.telefonica.de/service/talendbus/APTEventOperation"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="APTTalendBusEventService">
+        <wsdl:port binding="tb:APTTalendEventBinding" name="APTTalendBusEventPort">
+            <soap:address location="http://demucvpr112:8040/services/APT_TalendBus"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

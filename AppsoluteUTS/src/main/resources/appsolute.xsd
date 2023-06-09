@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://server.talend.telefonica.de/"
+        xmlns:userns="http://server.talend.telefonica.de/"
+        elementFormDefault="qualified">
+    
+    <!-- todo: check -->
+    <element name="ticketInfo" type="userns:TicketInfo"></element>
+
+    <complexType name="TicketInfo">
+        <sequence>
+            <element name="transactionHeader" type="userns:TransactionHeader"></element>
+            <element name="transactionBody" type="userns:TransactionBody"></element>
+        </sequence>
+    </complexType>
+    <complexType name="TransactionHeader">
+        <sequence>
+            <element name="source" type="string"></element>
+            <element name="destination" type="string"></element>
+            <!-- todo: update -->
+            <element name="method" type="string"></element>
+        </sequence>
+    </complexType>
+    <complexType name="TransactionBody">
+        <sequence>
+            <element name="supportGroupList" type="userns:SupportGroup" ></element>
+        </sequence>
+    </complexType>
+    <complexType name="SupportGroup">
+        <sequence>
+            <element name="supportGroup" type="string" minOccurs="0" maxOccurs="unbounded"></element>
+        </sequence>
+    </complexType>
+</schema>

@@ -1,0 +1,73 @@
+<definitions xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+             xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy"
+             xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://server.talend.telefonica.de/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/"
+             targetNamespace="http://server.talend.telefonica.de/" name="TransactionServerService">
+    <types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                    xmlns:tns="http://server.talend.telefonica.de/"
+                    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" elementFormDefault="qualified"
+                    targetNamespace="http://server.talend.telefonica.de/">
+            <!-- todo: response -->
+            <xsd:element name="ticketInfo" type="tns:TicketInfo"></xsd:element>
+
+            <xsd:complexType name="TicketInfo">
+                <xsd:sequence>
+                    <xsd:element name="transactionHeader" type="tns:TransactionHeader"></xsd:element>
+                    <xsd:element name="transactionBody" type="tns:TransactionBody"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="TransactionHeader">
+                <xsd:sequence>
+                    <xsd:element name="source" type="xsd:string"></xsd:element>
+                    <xsd:element name="destination" type="xsd:string"></xsd:element>
+                    <!-- todo: update -->
+                    <xsd:element name="method" type="xsd:string"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="TransactionBody">
+                <xsd:sequence>
+                    <xsd:element name="supportGroupList" type="tns:SupportGroup" minOccurs="0"
+                                 maxOccurs="unbounded"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="SupportGroup">
+                <xsd:sequence>
+                    <xsd:element name="supportGroup" type="xsd:string"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+    </types>
+    <message name="getTicketInfo">
+        <part name="parameters" element="tns:ticketInfo"/>
+    </message>
+    <message name="getTicketInfoResponse">
+        <part name="parameters" element="tns:ticketInfo"/>
+    </message>
+    <portType name="TransactionServer">
+        <operation name="getTicketInfo">
+            <input wsam:Action="http://server.talend.telefonica.de/TransactionServer/getTicketInfoRequest"
+                   message="tns:getTicketInfo"/>
+            <output wsam:Action="http://server.talend.telefonica.de/TransactionServer/getTicketInfoResponse"
+                    message="tns:getTicketInfoResponse"/>
+        </operation>
+    </portType>
+    <binding name="TransactionServerPortBinding" type="tns:TransactionServer">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <operation name="getTicketInfo">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="TransactionServerService">
+        <port name="TransactionServerPort" binding="tns:TransactionServerPortBinding">
+            <soap:address location="http://localhost:8040/services/appsolute"/>
+        </port>
+    </service>
+</definitions>
