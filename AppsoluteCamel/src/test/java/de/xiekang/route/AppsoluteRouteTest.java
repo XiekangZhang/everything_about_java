@@ -1,9 +1,6 @@
 package de.xiekang.route;
 
-import de.telefonica.talend.server.SupportGroup;
-import de.telefonica.talend.server.TicketInfo;
-import de.telefonica.talend.server.TransactionBody;
-import de.telefonica.talend.server.TransactionHeader;
+import de.telefonica.talend.server.*;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
@@ -41,5 +38,11 @@ class AppsoluteRouteTest {
 
         Marshaller marshaller = jaxbContext.createMarshaller();
         marshaller.marshal(ticketInfo, new File("./src/test/resources/ticketInfo.xml"));
+    }
+
+    @Test
+    void marshall1() throws JAXBException {
+        JAXBContext jaxbContext = JAXBContext.newInstance(TicketResponse.class);
+
     }
 }

@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2023.06.09 um 03:10:07 PM CEST 
+// Generiert: 2023.06.12 um 02:00:59 PM CEST 
 //
 
 
@@ -58,6 +58,14 @@ public class ObjectFactory {
      */
     public TransactionBody createTransactionBody() {
         return new TransactionBody();
+    }
+
+    /**
+     * Create an instance of {@link TicketResponse }
+     * 
+     */
+    public TicketResponse createTicketResponse() {
+        return new TicketResponse();
     }
 
     /**

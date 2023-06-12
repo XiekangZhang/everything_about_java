@@ -44,7 +44,11 @@ public class AppsoluteRoute extends RouteBuilder {
                                 new ByteArrayInputStream(exchange.getIn().getBody().toString().getBytes())
                         );
                         List<String> supportGroupList = ticketInfo.getTransactionBody().getSupportGroupList().getSupportGroups();
-                        System.out.println(supportGroupList.stream().collect(Collectors.joining(", ")));
+                        // todo: update the extracted group list in body
+                        // todo: give the body further into DI job
+                        System.out.println("found following support group list: (" + supportGroupList.stream().collect(Collectors.joining(", ")) + ")");
+
+                        // placeholder for DI Job
                     }
                 })
                 .to("mock:mock_server");

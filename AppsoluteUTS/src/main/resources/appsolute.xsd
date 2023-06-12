@@ -3,10 +3,12 @@
         targetNamespace="http://server.talend.telefonica.de/"
         xmlns:userns="http://server.talend.telefonica.de/"
         elementFormDefault="qualified">
-    
+
     <!-- todo: check -->
     <element name="ticketInfo" type="userns:TicketInfo"></element>
+    <element name="ticketResponse" type="userns:TicketResponse"></element>
 
+    <!-- request -->
     <complexType name="TicketInfo">
         <sequence>
             <element name="transactionHeader" type="userns:TransactionHeader"></element>
@@ -29,6 +31,88 @@
     <complexType name="SupportGroup">
         <sequence>
             <element name="supportGroup" type="string" minOccurs="0" maxOccurs="unbounded"></element>
+        </sequence>
+    </complexType>
+
+    <!-- response -->
+    <complexType name="TicketResponse">
+        <sequence>
+            <element name="CHANGE_REQUEST_ID" type="string" minOccurs="0"
+                     maxOccurs="unbounded"></element>
+            <element name="COORDINATOR_GROUP" type="string" minOccurs="0"
+                     maxOccurs="unbounded"></element>
+            <element name="CHANGE_LOCATION" type="string" minOccurs="0"
+                     maxOccurs="unbounded"></element>
+            <element name="SERVICE" type="string" minOccurs="0" maxOccurs="unbounded"></element>
+            <element name="CI_ID" type="string" minOccurs="0" maxOccurs="unbounded"></element>
+            <element name="CI_NAME" type="string" minOccurs="0" maxOccurs="unbounded"></element>
+            <element name="LOCATION_CI" type="string" minOccurs="0" maxOccurs="unbounded"></element>
+            <element name="TEMPLATE" type="string" minOccurs="0" maxOccurs="unbounded"></element>
+            <element name="SUMMARY" type="string" minOccurs="0" maxOccurs="unbounded"></element>
+            <element name="NOTES" type="string" minOccurs="0" maxOccurs="unbounded"></element>
+            <element name="CRQCLASS" type="string" minOccurs="0" maxOccurs="unbounded"></element>
+            <element name="CHANGE_REASON" type="string" minOccurs="0"
+                     maxOccurs="unbounded"></element>
+            <element name="TARGET_DATE" type="date" minOccurs="0" maxOccurs="unbounded"></element>
+            <element name="IMPACT" type="string" minOccurs="0" maxOccurs="unbounded"></element>
+            <element name="URGENCY" type="string" minOccurs="0" maxOccurs="unbounded"></element>
+            <element name="PRIORITY" type="string" minOccurs="0" maxOccurs="unbounded"></element>
+            <element name="RISK_LEVEL" type="string" minOccurs="0" maxOccurs="unbounded"></element>
+            <element name="STATUS" type="string" minOccurs="0" maxOccurs="unbounded"></element>
+            <element name="STATUS_REASON" type="string" minOccurs="0"
+                     maxOccurs="unbounded"></element>
+            <element name="MANAGER_GROUP" type="string" minOccurs="0"
+                     maxOccurs="unbounded"></element>
+            <element name="AFFECTED_CUSTOMERS" type="string" minOccurs="0"
+                     maxOccurs="unbounded"></element>
+            <element name="SCHEDULED_START_DATE" type="date" minOccurs="0"
+                     maxOccurs="unbounded"></element>
+            <element name="ACTUAL_START_DATE" type="date" minOccurs="0"
+                     maxOccurs="unbounded"></element>
+            <element name="SCHEDULED_END_DATE" type="date" minOccurs="0"
+                     maxOccurs="unbounded"></element>
+            <element name="ACTUAL_END_DATE" type="date" minOccurs="0"
+                     maxOccurs="unbounded"></element>
+            <element name="COMPLETED_DATE" type="date" minOccurs="0"
+                     maxOccurs="unbounded"></element>
+            <element name="EARLIEST_START_DATE" type="date" minOccurs="0"
+                     maxOccurs="unbounded"></element>
+            <element name="REQUESTED_START_DATE" type="date" minOccurs="0"
+                     maxOccurs="unbounded"></element>
+            <element name="REQUESTED_END_DATE" type="date" minOccurs="0"
+                     maxOccurs="unbounded"></element>
+            <element name="REQUESTED_SA_BEGIN_DATE" type="date" minOccurs="0"
+                     maxOccurs="unbounded"></element>
+            <element name="REQUESTED_SA_END_DATE" type="date" minOccurs="0"
+                     maxOccurs="unbounded"></element>
+            <element name="DURATION_MINUTES" type="int" minOccurs="0"
+                     maxOccurs="unbounded"></element>
+            <element name="SUBMIT_DATE" type="date" minOccurs="0" maxOccurs="unbounded"></element>
+            <element name="LAST_MODIFIED_DATE" type="date" minOccurs="0"
+                     maxOccurs="unbounded"></element>
+            <element name="IMPLEMENTOR_COMPANY" type="string" minOccurs="0"
+                     maxOccurs="unbounded"></element>
+            <element name="IMPLEMENTOR_ORGANIZATION" type="string" minOccurs="0"
+                     maxOccurs="unbounded"></element>
+            <element name="IMPLEMENTOR_GROUP" type="string" minOccurs="0"
+                     maxOccurs="unbounded"></element>
+            <element name="CUSTOMER_COMPANY" type="string" minOccurs="0"
+                     maxOccurs="unbounded"></element>
+            <element name="FAILURE_REASON" type="string" minOccurs="0"
+                     maxOccurs="unbounded"></element>
+            <element name="CLOSED_DATE" type="date" minOccurs="0" maxOccurs="unbounded"></element>
+            <element name="REQUESTOR_COMPANY" type="string" minOccurs="0"
+                     maxOccurs="unbounded"></element>
+            <element name="SITE_ID_A" type="string" minOccurs="0" maxOccurs="unbounded"></element>
+            <element name="SITE_ID_B" type="string" minOccurs="0" maxOccurs="unbounded"></element>
+            <element name="SITE_Name" type="string" minOccurs="0" maxOccurs="unbounded"></element>
+            <element name="SERVICE_AFFECTING" type="string" minOccurs="0"
+                     maxOccurs="unbounded"></element>
+            <element name="IS_CHANGE_SUCCESSFUL" type="string" minOccurs="0"
+                     maxOccurs="unbounded"></element>
+            <element name="RELEASE_ID" type="string" minOccurs="0" maxOccurs="unbounded"></element>
+            <element name="RELEASE_TEMPLATE" type="string" minOccurs="0"
+                     maxOccurs="unbounded"></element>
         </sequence>
     </complexType>
 </schema>

@@ -43,7 +43,7 @@
     </dependencies>
     <build>
         <plugins>
-            <plugin>
+            <!--plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.10.1</version>
@@ -51,7 +51,7 @@
                     <release>11</release>
                 </configuration>
             </plugin>
-            <!--plugin>
+            <plugin>
                 <groupId>com.sun.xml.ws</groupId>
                 <artifactId>jaxws-maven-plugin</artifactId>
                 <version>4.0.0</version>
@@ -75,7 +75,7 @@
                         <version>4.0.0-M4</version>
                     </dependency>
                 </dependencies>
-            </plugin-->
+            </plugin -->
 
             <!-- xsd to java classes -->
             <!-- https://mvnrepository.com/artifact/org.apache.maven/maven-plugin-api -->
