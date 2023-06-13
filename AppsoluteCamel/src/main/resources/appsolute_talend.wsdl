@@ -11,7 +11,7 @@
                     targetNamespace="http://server.talend.telefonica.de/">
             <!-- todo: response -->
             <xsd:element name="ticketInfo" type="tns:TicketInfo"></xsd:element>
-            <xsd:element name="ticketResponse" type="tns:TicketResponse"></xsd:element>
+            <xsd:element name="ticketResponseList" type="tns:TicketResponseList"></xsd:element>
 
             <!-- request -->
             <xsd:complexType name="TicketInfo">
@@ -41,84 +41,62 @@
             </xsd:complexType>
 
             <!-- response -->
+            <xsd:complexType name="TicketResponseList">
+                <xsd:sequence>
+                    <xsd:element name="ticketResponse" type="tns:TicketResponse" minOccurs="0"
+                             maxOccurs="unbounded"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
             <xsd:complexType name="TicketResponse">
                 <xsd:sequence>
-                    <xsd:element name="CHANGE_REQUEST_ID" type="xsd:string" minOccurs="0"
-                                 maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="COORDINATOR_GROUP" type="xsd:string" minOccurs="0"
-                                 maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="CHANGE_LOCATION" type="xsd:string" minOccurs="0"
-                                 maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="SERVICE" type="xsd:string" minOccurs="0" maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="CI_ID" type="xsd:string" minOccurs="0" maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="CI_NAME" type="xsd:string" minOccurs="0" maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="LOCATION_CI" type="xsd:string" minOccurs="0" maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="TEMPLATE" type="xsd:string" minOccurs="0" maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="SUMMARY" type="xsd:string" minOccurs="0" maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="NOTES" type="xsd:string" minOccurs="0" maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="CRQCLASS" type="xsd:string" minOccurs="0" maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="CHANGE_REASON" type="xsd:string" minOccurs="0"
-                                 maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="TARGET_DATE" type="xsd:date" minOccurs="0" maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="IMPACT" type="xsd:string" minOccurs="0" maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="URGENCY" type="xsd:string" minOccurs="0" maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="PRIORITY" type="xsd:string" minOccurs="0" maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="RISK_LEVEL" type="xsd:string" minOccurs="0" maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="STATUS" type="xsd:string" minOccurs="0" maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="STATUS_REASON" type="xsd:string" minOccurs="0"
-                                 maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="MANAGER_GROUP" type="xsd:string" minOccurs="0"
-                                 maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="AFFECTED_CUSTOMERS" type="xsd:string" minOccurs="0"
-                                 maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="SCHEDULED_START_DATE" type="xsd:date" minOccurs="0"
-                                 maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="ACTUAL_START_DATE" type="xsd:date" minOccurs="0"
-                                 maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="SCHEDULED_END_DATE" type="xsd:date" minOccurs="0"
-                                 maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="ACTUAL_END_DATE" type="xsd:date" minOccurs="0"
-                                 maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="COMPLETED_DATE" type="xsd:date" minOccurs="0"
-                                 maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="EARLIEST_START_DATE" type="xsd:date" minOccurs="0"
-                                 maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="REQUESTED_START_DATE" type="xsd:date" minOccurs="0"
-                                 maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="REQUESTED_END_DATE" type="xsd:date" minOccurs="0"
-                                 maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="REQUESTED_SA_BEGIN_DATE" type="xsd:date" minOccurs="0"
-                                 maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="REQUESTED_SA_END_DATE" type="xsd:date" minOccurs="0"
-                                 maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="DURATION_MINUTES" type="xsd:int" minOccurs="0"
-                                 maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="SUBMIT_DATE" type="xsd:date" minOccurs="0" maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="LAST_MODIFIED_DATE" type="xsd:date" minOccurs="0"
-                                 maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="IMPLEMENTOR_COMPANY" type="xsd:string" minOccurs="0"
-                                 maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="IMPLEMENTOR_ORGANIZATION" type="xsd:string" minOccurs="0"
-                                 maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="IMPLEMENTOR_GROUP" type="xsd:string" minOccurs="0"
-                                 maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="CUSTOMER_COMPANY" type="xsd:string" minOccurs="0"
-                                 maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="FAILURE_REASON" type="xsd:string" minOccurs="0"
-                                 maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="CLOSED_DATE" type="xsd:date" minOccurs="0" maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="REQUESTOR_COMPANY" type="xsd:string" minOccurs="0"
-                                 maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="SITE_ID_A" type="xsd:string" minOccurs="0" maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="SITE_ID_B" type="xsd:string" minOccurs="0" maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="SITE_Name" type="xsd:string" minOccurs="0" maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="SERVICE_AFFECTING" type="xsd:string" minOccurs="0"
-                                 maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="IS_CHANGE_SUCCESSFUL" type="xsd:string" minOccurs="0"
-                                 maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="RELEASE_ID" type="xsd:string" minOccurs="0" maxOccurs="unbounded"></xsd:element>
-                    <xsd:element name="RELEASE_TEMPLATE" type="xsd:string" minOccurs="0"
-                                 maxOccurs="unbounded"></xsd:element>
+                    <xsd:element name="CHANGE_REQUEST_ID" type="xsd:string"></xsd:element>
+                    <xsd:element name="COORDINATOR_GROUP" type="xsd:string"></xsd:element>
+                    <xsd:element name="CHANGE_LOCATION" type="xsd:string"></xsd:element>
+                    <xsd:element name="SERVICE" type="xsd:string"></xsd:element>
+                    <xsd:element name="CI_ID" type="xsd:string"></xsd:element>
+                    <xsd:element name="CI_NAME" type="xsd:string"></xsd:element>
+                    <xsd:element name="LOCATION_CI" type="xsd:string"></xsd:element>
+                    <xsd:element name="TEMPLATE" type="xsd:string"></xsd:element>
+                    <xsd:element name="SUMMARY" type="xsd:string"></xsd:element>
+                    <xsd:element name="NOTES" type="xsd:string"></xsd:element>
+                    <xsd:element name="CRQCLASS" type="xsd:string"></xsd:element>
+                    <xsd:element name="CHANGE_REASON" type="xsd:string"></xsd:element>
+                    <xsd:element name="TARGET_DATE" type="xsd:dateTime"></xsd:element>
+                    <xsd:element name="IMPACT" type="xsd:string"></xsd:element>
+                    <xsd:element name="URGENCY" type="xsd:string"></xsd:element>
+                    <xsd:element name="PRIORITY" type="xsd:string"></xsd:element>
+                    <xsd:element name="RISK_LEVEL" type="xsd:string"></xsd:element>
+                    <xsd:element name="STATUS" type="xsd:string"></xsd:element>
+                    <xsd:element name="STATUS_REASON" type="xsd:string"></xsd:element>
+                    <xsd:element name="MANAGER_GROUP" type="xsd:string"></xsd:element>
+                    <xsd:element name="AFFECTED_CUSTOMERS" type="xsd:string"></xsd:element>
+                    <xsd:element name="SCHEDULED_START_DATE" type="xsd:dateTime"></xsd:element>
+                    <xsd:element name="ACTUAL_START_DATE" type="xsd:dateTime"></xsd:element>
+                    <xsd:element name="SCHEDULED_END_DATE" type="xsd:dateTime"></xsd:element>
+                    <xsd:element name="ACTUAL_END_DATE" type="xsd:dateTime"></xsd:element>
+                    <xsd:element name="COMPLETED_DATE" type="xsd:dateTime"></xsd:element>
+                    <xsd:element name="EARLIEST_START_DATE" type="xsd:dateTime"></xsd:element>
+                    <xsd:element name="REQUESTED_START_DATE" type="xsd:dateTime"></xsd:element>
+                    <xsd:element name="REQUESTED_END_DATE" type="xsd:dateTime"></xsd:element>
+                    <xsd:element name="REQUESTED_SA_BEGIN_DATE" type="xsd:dateTime"></xsd:element>
+                    <xsd:element name="REQUESTED_SA_END_DATE" type="xsd:dateTime"></xsd:element>
+                    <xsd:element name="DURATION_MINUTES" type="xsd:int"></xsd:element>
+                    <xsd:element name="SUBMIT_DATE" type="xsd:dateTime"></xsd:element>
+                    <xsd:element name="LAST_MODIFIED_DATE" type="xsd:dateTime"></xsd:element>
+                    <xsd:element name="IMPLEMENTOR_COMPANY" type="xsd:string"></xsd:element>
+                    <xsd:element name="IMPLEMENTOR_ORGANIZATION" type="xsd:string"></xsd:element>
+                    <xsd:element name="IMPLEMENTOR_GROUP" type="xsd:string"></xsd:element>
+                    <xsd:element name="CUSTOMER_COMPANY" type="xsd:string"></xsd:element>
+                    <xsd:element name="FAILURE_REASON" type="xsd:string"></xsd:element>
+                    <xsd:element name="CLOSED_DATE" type="xsd:dateTime"></xsd:element>
+                    <xsd:element name="REQUESTOR_COMPANY" type="xsd:string"></xsd:element>
+                    <xsd:element name="SITE_ID_A" type="xsd:string"></xsd:element>
+                    <xsd:element name="SITE_ID_B" type="xsd:string"></xsd:element>
+                    <xsd:element name="SITE_Name" type="xsd:string"></xsd:element>
+                    <xsd:element name="SERVICE_AFFECTING" type="xsd:string"></xsd:element>
+                    <xsd:element name="IS_CHANGE_SUCCESSFUL" type="xsd:string"></xsd:element>
+                    <xsd:element name="RELEASE_ID" type="xsd:string"></xsd:element>
+                    <xsd:element name="RELEASE_TEMPLATE" type="xsd:string"></xsd:element>
                 </xsd:sequence>
             </xsd:complexType>
         </xsd:schema>
@@ -127,7 +105,7 @@
         <part name="parameters" element="tns:ticketInfo"/>
     </message>
     <message name="getTicketInfoResponse">
-        <part name="parameters" element="tns:ticketResponse"/>
+        <part name="parameters" element="tns:ticketResponseList"/>
     </message>
     <portType name="TransactionServer">
         <operation name="getTicketInfo">
@@ -154,4 +132,5 @@
             <soap:address location="http://localhost:8040/services/appsolute"/>
         </port>
     </service>
+
 </definitions>

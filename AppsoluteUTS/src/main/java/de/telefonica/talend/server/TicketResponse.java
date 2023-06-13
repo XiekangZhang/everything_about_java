@@ -2,22 +2,22 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2023.06.12 um 02:00:59 PM CEST 
+// Generiert: 2023.06.13 um 02:20:41 PM CEST 
 //
 
 
 package de.telefonica.talend.server;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Calendar;
 import javax.xml.datatype.XMLGregorianCalendar;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import org.w3._2001.xmlschema.Adapter1;
 
 
 /**
@@ -30,54 +30,54 @@ import jakarta.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="CHANGE_REQUEST_ID" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="COORDINATOR_GROUP" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="CHANGE_LOCATION" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="SERVICE" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="CI_ID" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="CI_NAME" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="LOCATION_CI" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="TEMPLATE" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="SUMMARY" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="NOTES" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="CRQCLASS" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="CHANGE_REASON" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="TARGET_DATE" type="{http://www.w3.org/2001/XMLSchema}date" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="IMPACT" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="URGENCY" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="PRIORITY" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="RISK_LEVEL" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="STATUS" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="STATUS_REASON" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="MANAGER_GROUP" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="AFFECTED_CUSTOMERS" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="SCHEDULED_START_DATE" type="{http://www.w3.org/2001/XMLSchema}date" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="ACTUAL_START_DATE" type="{http://www.w3.org/2001/XMLSchema}date" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="SCHEDULED_END_DATE" type="{http://www.w3.org/2001/XMLSchema}date" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="ACTUAL_END_DATE" type="{http://www.w3.org/2001/XMLSchema}date" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="COMPLETED_DATE" type="{http://www.w3.org/2001/XMLSchema}date" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="EARLIEST_START_DATE" type="{http://www.w3.org/2001/XMLSchema}date" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="REQUESTED_START_DATE" type="{http://www.w3.org/2001/XMLSchema}date" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="REQUESTED_END_DATE" type="{http://www.w3.org/2001/XMLSchema}date" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="REQUESTED_SA_BEGIN_DATE" type="{http://www.w3.org/2001/XMLSchema}date" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="REQUESTED_SA_END_DATE" type="{http://www.w3.org/2001/XMLSchema}date" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="DURATION_MINUTES" type="{http://www.w3.org/2001/XMLSchema}int" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="SUBMIT_DATE" type="{http://www.w3.org/2001/XMLSchema}date" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="LAST_MODIFIED_DATE" type="{http://www.w3.org/2001/XMLSchema}date" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="IMPLEMENTOR_COMPANY" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="IMPLEMENTOR_ORGANIZATION" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="IMPLEMENTOR_GROUP" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="CUSTOMER_COMPANY" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="FAILURE_REASON" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="CLOSED_DATE" type="{http://www.w3.org/2001/XMLSchema}date" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="REQUESTOR_COMPANY" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="SITE_ID_A" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="SITE_ID_B" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="SITE_Name" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="SERVICE_AFFECTING" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="IS_CHANGE_SUCCESSFUL" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="RELEASE_ID" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="RELEASE_TEMPLATE" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="CHANGE_REQUEST_ID" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="COORDINATOR_GROUP" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="CHANGE_LOCATION" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="SERVICE" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="CI_ID" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="CI_NAME" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="LOCATION_CI" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="TEMPLATE" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="SUMMARY" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="NOTES" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="CRQCLASS" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="CHANGE_REASON" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="TARGET_DATE" type="{http://www.w3.org/2001/XMLSchema}dateTime"/&gt;
+ *         &lt;element name="IMPACT" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="URGENCY" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="PRIORITY" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="RISK_LEVEL" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="STATUS" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="STATUS_REASON" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="MANAGER_GROUP" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="AFFECTED_CUSTOMERS" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="SCHEDULED_START_DATE" type="{http://www.w3.org/2001/XMLSchema}dateTime"/&gt;
+ *         &lt;element name="ACTUAL_START_DATE" type="{http://www.w3.org/2001/XMLSchema}dateTime"/&gt;
+ *         &lt;element name="SCHEDULED_END_DATE" type="{http://www.w3.org/2001/XMLSchema}dateTime"/&gt;
+ *         &lt;element name="ACTUAL_END_DATE" type="{http://www.w3.org/2001/XMLSchema}dateTime"/&gt;
+ *         &lt;element name="COMPLETED_DATE" type="{http://www.w3.org/2001/XMLSchema}dateTime"/&gt;
+ *         &lt;element name="EARLIEST_START_DATE" type="{http://www.w3.org/2001/XMLSchema}dateTime"/&gt;
+ *         &lt;element name="REQUESTED_START_DATE" type="{http://www.w3.org/2001/XMLSchema}dateTime"/&gt;
+ *         &lt;element name="REQUESTED_END_DATE" type="{http://www.w3.org/2001/XMLSchema}dateTime"/&gt;
+ *         &lt;element name="REQUESTED_SA_BEGIN_DATE" type="{http://www.w3.org/2001/XMLSchema}dateTime"/&gt;
+ *         &lt;element name="REQUESTED_SA_END_DATE" type="{http://www.w3.org/2001/XMLSchema}dateTime"/&gt;
+ *         &lt;element name="DURATION_MINUTES" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *         &lt;element name="SUBMIT_DATE" type="{http://www.w3.org/2001/XMLSchema}date"/&gt;
+ *         &lt;element name="LAST_MODIFIED_DATE" type="{http://www.w3.org/2001/XMLSchema}dateTime"/&gt;
+ *         &lt;element name="IMPLEMENTOR_COMPANY" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="IMPLEMENTOR_ORGANIZATION" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="IMPLEMENTOR_GROUP" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="CUSTOMER_COMPANY" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="FAILURE_REASON" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="CLOSED_DATE" type="{http://www.w3.org/2001/XMLSchema}dateTime"/&gt;
+ *         &lt;element name="REQUESTOR_COMPANY" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="SITE_ID_A" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="SITE_ID_B" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="SITE_Name" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="SERVICE_AFFECTING" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="IS_CHANGE_SUCCESSFUL" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="RELEASE_ID" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="RELEASE_TEMPLATE" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -88,1562 +88,1326 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TicketResponse", propOrder = {
-    "changerequestids",
-    "coordinatorgroups",
-    "changelocations",
-    "services",
-    "ciids",
-    "cinames",
-    "locationcis",
-    "templates",
-    "summaries",
+    "changerequestid",
+    "coordinatorgroup",
+    "changelocation",
+    "service",
+    "ciid",
+    "ciname",
+    "locationci",
+    "template",
+    "summary",
     "notes",
-    "crqclasses",
-    "changereasons",
-    "targetdates",
-    "impacts",
-    "urgencies",
-    "priorities",
-    "risklevels",
-    "statuses",
-    "statusreasons",
-    "managergroups",
+    "crqclass",
+    "changereason",
+    "targetdate",
+    "impact",
+    "urgency",
+    "priority",
+    "risklevel",
+    "status",
+    "statusreason",
+    "managergroup",
     "affectedcustomers",
-    "scheduledstartdates",
-    "actualstartdates",
-    "scheduledenddates",
-    "actualenddates",
-    "completeddates",
-    "earlieststartdates",
-    "requestedstartdates",
-    "requestedenddates",
-    "requestedsabegindates",
-    "requestedsaenddates",
+    "scheduledstartdate",
+    "actualstartdate",
+    "scheduledenddate",
+    "actualenddate",
+    "completeddate",
+    "earlieststartdate",
+    "requestedstartdate",
+    "requestedenddate",
+    "requestedsabegindate",
+    "requestedsaenddate",
     "durationminutes",
-    "submitdates",
-    "lastmodifieddates",
-    "implementorcompanies",
-    "implementororganizations",
-    "implementorgroups",
-    "customercompanies",
-    "failurereasons",
-    "closeddates",
-    "requestorcompanies",
-    "siteidas",
-    "siteidbs",
-    "siteNames",
-    "serviceaffectings",
-    "ischangesuccessfuls",
-    "releaseids",
-    "releasetemplates"
+    "submitdate",
+    "lastmodifieddate",
+    "implementorcompany",
+    "implementororganization",
+    "implementorgroup",
+    "customercompany",
+    "failurereason",
+    "closeddate",
+    "requestorcompany",
+    "siteida",
+    "siteidb",
+    "siteName",
+    "serviceaffecting",
+    "ischangesuccessful",
+    "releaseid",
+    "releasetemplate"
 })
-@XmlRootElement(name = "ticketResponse")
 public class TicketResponse
     implements Serializable
 {
 
     private final static long serialVersionUID = -1L;
-    @XmlElement(name = "CHANGE_REQUEST_ID")
-    protected List<String> changerequestids;
-    @XmlElement(name = "COORDINATOR_GROUP")
-    protected List<String> coordinatorgroups;
-    @XmlElement(name = "CHANGE_LOCATION")
-    protected List<String> changelocations;
-    @XmlElement(name = "SERVICE")
-    protected List<String> services;
-    @XmlElement(name = "CI_ID")
-    protected List<String> ciids;
-    @XmlElement(name = "CI_NAME")
-    protected List<String> cinames;
-    @XmlElement(name = "LOCATION_CI")
-    protected List<String> locationcis;
-    @XmlElement(name = "TEMPLATE")
-    protected List<String> templates;
-    @XmlElement(name = "SUMMARY")
-    protected List<String> summaries;
-    @XmlElement(name = "NOTES")
-    protected List<String> notes;
-    @XmlElement(name = "CRQCLASS")
-    protected List<String> crqclasses;
-    @XmlElement(name = "CHANGE_REASON")
-    protected List<String> changereasons;
-    @XmlElement(name = "TARGET_DATE")
+    @XmlElement(name = "CHANGE_REQUEST_ID", required = true)
+    protected String changerequestid;
+    @XmlElement(name = "COORDINATOR_GROUP", required = true)
+    protected String coordinatorgroup;
+    @XmlElement(name = "CHANGE_LOCATION", required = true)
+    protected String changelocation;
+    @XmlElement(name = "SERVICE", required = true)
+    protected String service;
+    @XmlElement(name = "CI_ID", required = true)
+    protected String ciid;
+    @XmlElement(name = "CI_NAME", required = true)
+    protected String ciname;
+    @XmlElement(name = "LOCATION_CI", required = true)
+    protected String locationci;
+    @XmlElement(name = "TEMPLATE", required = true)
+    protected String template;
+    @XmlElement(name = "SUMMARY", required = true)
+    protected String summary;
+    @XmlElement(name = "NOTES", required = true)
+    protected String notes;
+    @XmlElement(name = "CRQCLASS", required = true)
+    protected String crqclass;
+    @XmlElement(name = "CHANGE_REASON", required = true)
+    protected String changereason;
+    @XmlElement(name = "TARGET_DATE", required = true, type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "dateTime")
+    protected Calendar targetdate;
+    @XmlElement(name = "IMPACT", required = true)
+    protected String impact;
+    @XmlElement(name = "URGENCY", required = true)
+    protected String urgency;
+    @XmlElement(name = "PRIORITY", required = true)
+    protected String priority;
+    @XmlElement(name = "RISK_LEVEL", required = true)
+    protected String risklevel;
+    @XmlElement(name = "STATUS", required = true)
+    protected String status;
+    @XmlElement(name = "STATUS_REASON", required = true)
+    protected String statusreason;
+    @XmlElement(name = "MANAGER_GROUP", required = true)
+    protected String managergroup;
+    @XmlElement(name = "AFFECTED_CUSTOMERS", required = true)
+    protected String affectedcustomers;
+    @XmlElement(name = "SCHEDULED_START_DATE", required = true, type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "dateTime")
+    protected Calendar scheduledstartdate;
+    @XmlElement(name = "ACTUAL_START_DATE", required = true, type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "dateTime")
+    protected Calendar actualstartdate;
+    @XmlElement(name = "SCHEDULED_END_DATE", required = true, type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "dateTime")
+    protected Calendar scheduledenddate;
+    @XmlElement(name = "ACTUAL_END_DATE", required = true, type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "dateTime")
+    protected Calendar actualenddate;
+    @XmlElement(name = "COMPLETED_DATE", required = true, type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "dateTime")
+    protected Calendar completeddate;
+    @XmlElement(name = "EARLIEST_START_DATE", required = true, type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "dateTime")
+    protected Calendar earlieststartdate;
+    @XmlElement(name = "REQUESTED_START_DATE", required = true, type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "dateTime")
+    protected Calendar requestedstartdate;
+    @XmlElement(name = "REQUESTED_END_DATE", required = true, type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "dateTime")
+    protected Calendar requestedenddate;
+    @XmlElement(name = "REQUESTED_SA_BEGIN_DATE", required = true, type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "dateTime")
+    protected Calendar requestedsabegindate;
+    @XmlElement(name = "REQUESTED_SA_END_DATE", required = true, type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "dateTime")
+    protected Calendar requestedsaenddate;
+    @XmlElement(name = "DURATION_MINUTES")
+    protected int durationminutes;
+    @XmlElement(name = "SUBMIT_DATE", required = true)
     @XmlSchemaType(name = "date")
-    protected List<XMLGregorianCalendar> targetdates;
-    @XmlElement(name = "IMPACT")
-    protected List<String> impacts;
-    @XmlElement(name = "URGENCY")
-    protected List<String> urgencies;
-    @XmlElement(name = "PRIORITY")
-    protected List<String> priorities;
-    @XmlElement(name = "RISK_LEVEL")
-    protected List<String> risklevels;
-    @XmlElement(name = "STATUS")
-    protected List<String> statuses;
-    @XmlElement(name = "STATUS_REASON")
-    protected List<String> statusreasons;
-    @XmlElement(name = "MANAGER_GROUP")
-    protected List<String> managergroups;
-    @XmlElement(name = "AFFECTED_CUSTOMERS")
-    protected List<String> affectedcustomers;
-    @XmlElement(name = "SCHEDULED_START_DATE")
-    @XmlSchemaType(name = "date")
-    protected List<XMLGregorianCalendar> scheduledstartdates;
-    @XmlElement(name = "ACTUAL_START_DATE")
-    @XmlSchemaType(name = "date")
-    protected List<XMLGregorianCalendar> actualstartdates;
-    @XmlElement(name = "SCHEDULED_END_DATE")
-    @XmlSchemaType(name = "date")
-    protected List<XMLGregorianCalendar> scheduledenddates;
-    @XmlElement(name = "ACTUAL_END_DATE")
-    @XmlSchemaType(name = "date")
-    protected List<XMLGregorianCalendar> actualenddates;
-    @XmlElement(name = "COMPLETED_DATE")
-    @XmlSchemaType(name = "date")
-    protected List<XMLGregorianCalendar> completeddates;
-    @XmlElement(name = "EARLIEST_START_DATE")
-    @XmlSchemaType(name = "date")
-    protected List<XMLGregorianCalendar> earlieststartdates;
-    @XmlElement(name = "REQUESTED_START_DATE")
-    @XmlSchemaType(name = "date")
-    protected List<XMLGregorianCalendar> requestedstartdates;
-    @XmlElement(name = "REQUESTED_END_DATE")
-    @XmlSchemaType(name = "date")
-    protected List<XMLGregorianCalendar> requestedenddates;
-    @XmlElement(name = "REQUESTED_SA_BEGIN_DATE")
-    @XmlSchemaType(name = "date")
-    protected List<XMLGregorianCalendar> requestedsabegindates;
-    @XmlElement(name = "REQUESTED_SA_END_DATE")
-    @XmlSchemaType(name = "date")
-    protected List<XMLGregorianCalendar> requestedsaenddates;
-    @XmlElement(name = "DURATION_MINUTES", type = Integer.class)
-    protected List<Integer> durationminutes;
-    @XmlElement(name = "SUBMIT_DATE")
-    @XmlSchemaType(name = "date")
-    protected List<XMLGregorianCalendar> submitdates;
-    @XmlElement(name = "LAST_MODIFIED_DATE")
-    @XmlSchemaType(name = "date")
-    protected List<XMLGregorianCalendar> lastmodifieddates;
-    @XmlElement(name = "IMPLEMENTOR_COMPANY")
-    protected List<String> implementorcompanies;
-    @XmlElement(name = "IMPLEMENTOR_ORGANIZATION")
-    protected List<String> implementororganizations;
-    @XmlElement(name = "IMPLEMENTOR_GROUP")
-    protected List<String> implementorgroups;
-    @XmlElement(name = "CUSTOMER_COMPANY")
-    protected List<String> customercompanies;
-    @XmlElement(name = "FAILURE_REASON")
-    protected List<String> failurereasons;
-    @XmlElement(name = "CLOSED_DATE")
-    @XmlSchemaType(name = "date")
-    protected List<XMLGregorianCalendar> closeddates;
-    @XmlElement(name = "REQUESTOR_COMPANY")
-    protected List<String> requestorcompanies;
-    @XmlElement(name = "SITE_ID_A")
-    protected List<String> siteidas;
-    @XmlElement(name = "SITE_ID_B")
-    protected List<String> siteidbs;
-    @XmlElement(name = "SITE_Name")
-    protected List<String> siteNames;
-    @XmlElement(name = "SERVICE_AFFECTING")
-    protected List<String> serviceaffectings;
-    @XmlElement(name = "IS_CHANGE_SUCCESSFUL")
-    protected List<String> ischangesuccessfuls;
-    @XmlElement(name = "RELEASE_ID")
-    protected List<String> releaseids;
-    @XmlElement(name = "RELEASE_TEMPLATE")
-    protected List<String> releasetemplates;
+    protected XMLGregorianCalendar submitdate;
+    @XmlElement(name = "LAST_MODIFIED_DATE", required = true, type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "dateTime")
+    protected Calendar lastmodifieddate;
+    @XmlElement(name = "IMPLEMENTOR_COMPANY", required = true)
+    protected String implementorcompany;
+    @XmlElement(name = "IMPLEMENTOR_ORGANIZATION", required = true)
+    protected String implementororganization;
+    @XmlElement(name = "IMPLEMENTOR_GROUP", required = true)
+    protected String implementorgroup;
+    @XmlElement(name = "CUSTOMER_COMPANY", required = true)
+    protected String customercompany;
+    @XmlElement(name = "FAILURE_REASON", required = true)
+    protected String failurereason;
+    @XmlElement(name = "CLOSED_DATE", required = true, type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "dateTime")
+    protected Calendar closeddate;
+    @XmlElement(name = "REQUESTOR_COMPANY", required = true)
+    protected String requestorcompany;
+    @XmlElement(name = "SITE_ID_A", required = true)
+    protected String siteida;
+    @XmlElement(name = "SITE_ID_B", required = true)
+    protected String siteidb;
+    @XmlElement(name = "SITE_Name", required = true)
+    protected String siteName;
+    @XmlElement(name = "SERVICE_AFFECTING", required = true)
+    protected String serviceaffecting;
+    @XmlElement(name = "IS_CHANGE_SUCCESSFUL", required = true)
+    protected String ischangesuccessful;
+    @XmlElement(name = "RELEASE_ID", required = true)
+    protected String releaseid;
+    @XmlElement(name = "RELEASE_TEMPLATE", required = true)
+    protected String releasetemplate;
 
     /**
-     * Gets the value of the changerequestids property.
+     * Ruft den Wert der changerequestid-Eigenschaft ab.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the changerequestids property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getCHANGEREQUESTIDS().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public List<String> getCHANGEREQUESTIDS() {
-        if (changerequestids == null) {
-            changerequestids = new ArrayList<String>();
-        }
-        return this.changerequestids;
+    public String getCHANGEREQUESTID() {
+        return changerequestid;
     }
 
     /**
-     * Gets the value of the coordinatorgroups property.
+     * Legt den Wert der changerequestid-Eigenschaft fest.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the coordinatorgroups property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getCOORDINATORGROUPS().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public List<String> getCOORDINATORGROUPS() {
-        if (coordinatorgroups == null) {
-            coordinatorgroups = new ArrayList<String>();
-        }
-        return this.coordinatorgroups;
+    public void setCHANGEREQUESTID(String value) {
+        this.changerequestid = value;
     }
 
     /**
-     * Gets the value of the changelocations property.
+     * Ruft den Wert der coordinatorgroup-Eigenschaft ab.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the changelocations property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getCHANGELOCATIONS().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public List<String> getCHANGELOCATIONS() {
-        if (changelocations == null) {
-            changelocations = new ArrayList<String>();
-        }
-        return this.changelocations;
+    public String getCOORDINATORGROUP() {
+        return coordinatorgroup;
     }
 
     /**
-     * Gets the value of the services property.
+     * Legt den Wert der coordinatorgroup-Eigenschaft fest.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the services property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getSERVICES().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public List<String> getSERVICES() {
-        if (services == null) {
-            services = new ArrayList<String>();
-        }
-        return this.services;
+    public void setCOORDINATORGROUP(String value) {
+        this.coordinatorgroup = value;
     }
 
     /**
-     * Gets the value of the ciids property.
+     * Ruft den Wert der changelocation-Eigenschaft ab.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the ciids property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getCIIDS().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public List<String> getCIIDS() {
-        if (ciids == null) {
-            ciids = new ArrayList<String>();
-        }
-        return this.ciids;
+    public String getCHANGELOCATION() {
+        return changelocation;
     }
 
     /**
-     * Gets the value of the cinames property.
+     * Legt den Wert der changelocation-Eigenschaft fest.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the cinames property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getCINAMES().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public List<String> getCINAMES() {
-        if (cinames == null) {
-            cinames = new ArrayList<String>();
-        }
-        return this.cinames;
+    public void setCHANGELOCATION(String value) {
+        this.changelocation = value;
     }
 
     /**
-     * Gets the value of the locationcis property.
+     * Ruft den Wert der service-Eigenschaft ab.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the locationcis property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getLOCATIONCIS().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public List<String> getLOCATIONCIS() {
-        if (locationcis == null) {
-            locationcis = new ArrayList<String>();
-        }
-        return this.locationcis;
+    public String getSERVICE() {
+        return service;
     }
 
     /**
-     * Gets the value of the templates property.
+     * Legt den Wert der service-Eigenschaft fest.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the templates property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getTEMPLATES().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public List<String> getTEMPLATES() {
-        if (templates == null) {
-            templates = new ArrayList<String>();
-        }
-        return this.templates;
+    public void setSERVICE(String value) {
+        this.service = value;
     }
 
     /**
-     * Gets the value of the summaries property.
+     * Ruft den Wert der ciid-Eigenschaft ab.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the summaries property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getSUMMARIES().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public List<String> getSUMMARIES() {
-        if (summaries == null) {
-            summaries = new ArrayList<String>();
-        }
-        return this.summaries;
+    public String getCIID() {
+        return ciid;
     }
 
     /**
-     * Gets the value of the notes property.
+     * Legt den Wert der ciid-Eigenschaft fest.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the notes property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getNOTES().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public List<String> getNOTES() {
-        if (notes == null) {
-            notes = new ArrayList<String>();
-        }
-        return this.notes;
+    public void setCIID(String value) {
+        this.ciid = value;
     }
 
     /**
-     * Gets the value of the crqclasses property.
+     * Ruft den Wert der ciname-Eigenschaft ab.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the crqclasses property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getCRQCLASSES().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public List<String> getCRQCLASSES() {
-        if (crqclasses == null) {
-            crqclasses = new ArrayList<String>();
-        }
-        return this.crqclasses;
+    public String getCINAME() {
+        return ciname;
     }
 
     /**
-     * Gets the value of the changereasons property.
+     * Legt den Wert der ciname-Eigenschaft fest.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the changereasons property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getCHANGEREASONS().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public List<String> getCHANGEREASONS() {
-        if (changereasons == null) {
-            changereasons = new ArrayList<String>();
-        }
-        return this.changereasons;
+    public void setCINAME(String value) {
+        this.ciname = value;
     }
 
     /**
-     * Gets the value of the targetdates property.
+     * Ruft den Wert der locationci-Eigenschaft ab.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the targetdates property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getTARGETDATES().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link XMLGregorianCalendar }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public List<XMLGregorianCalendar> getTARGETDATES() {
-        if (targetdates == null) {
-            targetdates = new ArrayList<XMLGregorianCalendar>();
-        }
-        return this.targetdates;
+    public String getLOCATIONCI() {
+        return locationci;
     }
 
     /**
-     * Gets the value of the impacts property.
+     * Legt den Wert der locationci-Eigenschaft fest.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the impacts property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getIMPACTS().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public List<String> getIMPACTS() {
-        if (impacts == null) {
-            impacts = new ArrayList<String>();
-        }
-        return this.impacts;
+    public void setLOCATIONCI(String value) {
+        this.locationci = value;
     }
 
     /**
-     * Gets the value of the urgencies property.
+     * Ruft den Wert der template-Eigenschaft ab.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the urgencies property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getURGENCIES().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public List<String> getURGENCIES() {
-        if (urgencies == null) {
-            urgencies = new ArrayList<String>();
-        }
-        return this.urgencies;
+    public String getTEMPLATE() {
+        return template;
     }
 
     /**
-     * Gets the value of the priorities property.
+     * Legt den Wert der template-Eigenschaft fest.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the priorities property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getPRIORITIES().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public List<String> getPRIORITIES() {
-        if (priorities == null) {
-            priorities = new ArrayList<String>();
-        }
-        return this.priorities;
+    public void setTEMPLATE(String value) {
+        this.template = value;
     }
 
     /**
-     * Gets the value of the risklevels property.
+     * Ruft den Wert der summary-Eigenschaft ab.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the risklevels property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getRISKLEVELS().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public List<String> getRISKLEVELS() {
-        if (risklevels == null) {
-            risklevels = new ArrayList<String>();
-        }
-        return this.risklevels;
+    public String getSUMMARY() {
+        return summary;
     }
 
     /**
-     * Gets the value of the statuses property.
+     * Legt den Wert der summary-Eigenschaft fest.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the statuses property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getSTATUSES().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public List<String> getSTATUSES() {
-        if (statuses == null) {
-            statuses = new ArrayList<String>();
-        }
-        return this.statuses;
+    public void setSUMMARY(String value) {
+        this.summary = value;
     }
 
     /**
-     * Gets the value of the statusreasons property.
+     * Ruft den Wert der notes-Eigenschaft ab.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the statusreasons property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getSTATUSREASONS().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public List<String> getSTATUSREASONS() {
-        if (statusreasons == null) {
-            statusreasons = new ArrayList<String>();
-        }
-        return this.statusreasons;
+    public String getNOTES() {
+        return notes;
     }
 
     /**
-     * Gets the value of the managergroups property.
+     * Legt den Wert der notes-Eigenschaft fest.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the managergroups property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getMANAGERGROUPS().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public List<String> getMANAGERGROUPS() {
-        if (managergroups == null) {
-            managergroups = new ArrayList<String>();
-        }
-        return this.managergroups;
+    public void setNOTES(String value) {
+        this.notes = value;
     }
 
     /**
-     * Gets the value of the affectedcustomers property.
+     * Ruft den Wert der crqclass-Eigenschaft ab.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the affectedcustomers property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getAFFECTEDCUSTOMERS().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public List<String> getAFFECTEDCUSTOMERS() {
-        if (affectedcustomers == null) {
-            affectedcustomers = new ArrayList<String>();
-        }
-        return this.affectedcustomers;
+    public String getCRQCLASS() {
+        return crqclass;
     }
 
     /**
-     * Gets the value of the scheduledstartdates property.
+     * Legt den Wert der crqclass-Eigenschaft fest.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the scheduledstartdates property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getSCHEDULEDSTARTDATES().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link XMLGregorianCalendar }
-     * 
-     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public List<XMLGregorianCalendar> getSCHEDULEDSTARTDATES() {
-        if (scheduledstartdates == null) {
-            scheduledstartdates = new ArrayList<XMLGregorianCalendar>();
-        }
-        return this.scheduledstartdates;
+    public void setCRQCLASS(String value) {
+        this.crqclass = value;
     }
 
     /**
-     * Gets the value of the actualstartdates property.
+     * Ruft den Wert der changereason-Eigenschaft ab.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the actualstartdates property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getACTUALSTARTDATES().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link XMLGregorianCalendar }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public List<XMLGregorianCalendar> getACTUALSTARTDATES() {
-        if (actualstartdates == null) {
-            actualstartdates = new ArrayList<XMLGregorianCalendar>();
-        }
-        return this.actualstartdates;
+    public String getCHANGEREASON() {
+        return changereason;
     }
 
     /**
-     * Gets the value of the scheduledenddates property.
+     * Legt den Wert der changereason-Eigenschaft fest.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the scheduledenddates property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getSCHEDULEDENDDATES().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link XMLGregorianCalendar }
-     * 
-     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public List<XMLGregorianCalendar> getSCHEDULEDENDDATES() {
-        if (scheduledenddates == null) {
-            scheduledenddates = new ArrayList<XMLGregorianCalendar>();
-        }
-        return this.scheduledenddates;
+    public void setCHANGEREASON(String value) {
+        this.changereason = value;
     }
 
     /**
-     * Gets the value of the actualenddates property.
+     * Ruft den Wert der targetdate-Eigenschaft ab.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the actualenddates property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getACTUALENDDATES().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link XMLGregorianCalendar }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public List<XMLGregorianCalendar> getACTUALENDDATES() {
-        if (actualenddates == null) {
-            actualenddates = new ArrayList<XMLGregorianCalendar>();
-        }
-        return this.actualenddates;
+    public Calendar getTARGETDATE() {
+        return targetdate;
     }
 
     /**
-     * Gets the value of the completeddates property.
+     * Legt den Wert der targetdate-Eigenschaft fest.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the completeddates property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getCOMPLETEDDATES().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link XMLGregorianCalendar }
-     * 
-     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public List<XMLGregorianCalendar> getCOMPLETEDDATES() {
-        if (completeddates == null) {
-            completeddates = new ArrayList<XMLGregorianCalendar>();
-        }
-        return this.completeddates;
+    public void setTARGETDATE(Calendar value) {
+        this.targetdate = value;
     }
 
     /**
-     * Gets the value of the earlieststartdates property.
+     * Ruft den Wert der impact-Eigenschaft ab.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the earlieststartdates property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getEARLIESTSTARTDATES().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link XMLGregorianCalendar }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public List<XMLGregorianCalendar> getEARLIESTSTARTDATES() {
-        if (earlieststartdates == null) {
-            earlieststartdates = new ArrayList<XMLGregorianCalendar>();
-        }
-        return this.earlieststartdates;
+    public String getIMPACT() {
+        return impact;
     }
 
     /**
-     * Gets the value of the requestedstartdates property.
+     * Legt den Wert der impact-Eigenschaft fest.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the requestedstartdates property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getREQUESTEDSTARTDATES().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link XMLGregorianCalendar }
-     * 
-     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public List<XMLGregorianCalendar> getREQUESTEDSTARTDATES() {
-        if (requestedstartdates == null) {
-            requestedstartdates = new ArrayList<XMLGregorianCalendar>();
-        }
-        return this.requestedstartdates;
+    public void setIMPACT(String value) {
+        this.impact = value;
     }
 
     /**
-     * Gets the value of the requestedenddates property.
+     * Ruft den Wert der urgency-Eigenschaft ab.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the requestedenddates property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getREQUESTEDENDDATES().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link XMLGregorianCalendar }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public List<XMLGregorianCalendar> getREQUESTEDENDDATES() {
-        if (requestedenddates == null) {
-            requestedenddates = new ArrayList<XMLGregorianCalendar>();
-        }
-        return this.requestedenddates;
+    public String getURGENCY() {
+        return urgency;
     }
 
     /**
-     * Gets the value of the requestedsabegindates property.
+     * Legt den Wert der urgency-Eigenschaft fest.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the requestedsabegindates property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getREQUESTEDSABEGINDATES().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link XMLGregorianCalendar }
-     * 
-     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public List<XMLGregorianCalendar> getREQUESTEDSABEGINDATES() {
-        if (requestedsabegindates == null) {
-            requestedsabegindates = new ArrayList<XMLGregorianCalendar>();
-        }
-        return this.requestedsabegindates;
+    public void setURGENCY(String value) {
+        this.urgency = value;
     }
 
     /**
-     * Gets the value of the requestedsaenddates property.
+     * Ruft den Wert der priority-Eigenschaft ab.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the requestedsaenddates property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getREQUESTEDSAENDDATES().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link XMLGregorianCalendar }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public List<XMLGregorianCalendar> getREQUESTEDSAENDDATES() {
-        if (requestedsaenddates == null) {
-            requestedsaenddates = new ArrayList<XMLGregorianCalendar>();
-        }
-        return this.requestedsaenddates;
+    public String getPRIORITY() {
+        return priority;
     }
 
     /**
-     * Gets the value of the durationminutes property.
+     * Legt den Wert der priority-Eigenschaft fest.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the durationminutes property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getDURATIONMINUTES().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Integer }
-     * 
-     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public List<Integer> getDURATIONMINUTES() {
-        if (durationminutes == null) {
-            durationminutes = new ArrayList<Integer>();
-        }
-        return this.durationminutes;
+    public void setPRIORITY(String value) {
+        this.priority = value;
     }
 
     /**
-     * Gets the value of the submitdates property.
+     * Ruft den Wert der risklevel-Eigenschaft ab.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the submitdates property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getSUBMITDATES().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link XMLGregorianCalendar }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public List<XMLGregorianCalendar> getSUBMITDATES() {
-        if (submitdates == null) {
-            submitdates = new ArrayList<XMLGregorianCalendar>();
-        }
-        return this.submitdates;
+    public String getRISKLEVEL() {
+        return risklevel;
     }
 
     /**
-     * Gets the value of the lastmodifieddates property.
+     * Legt den Wert der risklevel-Eigenschaft fest.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the lastmodifieddates property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getLASTMODIFIEDDATES().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link XMLGregorianCalendar }
-     * 
-     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public List<XMLGregorianCalendar> getLASTMODIFIEDDATES() {
-        if (lastmodifieddates == null) {
-            lastmodifieddates = new ArrayList<XMLGregorianCalendar>();
-        }
-        return this.lastmodifieddates;
+    public void setRISKLEVEL(String value) {
+        this.risklevel = value;
     }
 
     /**
-     * Gets the value of the implementorcompanies property.
+     * Ruft den Wert der status-Eigenschaft ab.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the implementorcompanies property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getIMPLEMENTORCOMPANIES().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public List<String> getIMPLEMENTORCOMPANIES() {
-        if (implementorcompanies == null) {
-            implementorcompanies = new ArrayList<String>();
-        }
-        return this.implementorcompanies;
+    public String getSTATUS() {
+        return status;
     }
 
     /**
-     * Gets the value of the implementororganizations property.
+     * Legt den Wert der status-Eigenschaft fest.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the implementororganizations property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getIMPLEMENTORORGANIZATIONS().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public List<String> getIMPLEMENTORORGANIZATIONS() {
-        if (implementororganizations == null) {
-            implementororganizations = new ArrayList<String>();
-        }
-        return this.implementororganizations;
+    public void setSTATUS(String value) {
+        this.status = value;
     }
 
     /**
-     * Gets the value of the implementorgroups property.
+     * Ruft den Wert der statusreason-Eigenschaft ab.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the implementorgroups property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getIMPLEMENTORGROUPS().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public List<String> getIMPLEMENTORGROUPS() {
-        if (implementorgroups == null) {
-            implementorgroups = new ArrayList<String>();
-        }
-        return this.implementorgroups;
+    public String getSTATUSREASON() {
+        return statusreason;
     }
 
     /**
-     * Gets the value of the customercompanies property.
+     * Legt den Wert der statusreason-Eigenschaft fest.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the customercompanies property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getCUSTOMERCOMPANIES().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public List<String> getCUSTOMERCOMPANIES() {
-        if (customercompanies == null) {
-            customercompanies = new ArrayList<String>();
-        }
-        return this.customercompanies;
+    public void setSTATUSREASON(String value) {
+        this.statusreason = value;
     }
 
     /**
-     * Gets the value of the failurereasons property.
+     * Ruft den Wert der managergroup-Eigenschaft ab.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the failurereasons property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getFAILUREREASONS().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public List<String> getFAILUREREASONS() {
-        if (failurereasons == null) {
-            failurereasons = new ArrayList<String>();
-        }
-        return this.failurereasons;
+    public String getMANAGERGROUP() {
+        return managergroup;
     }
 
     /**
-     * Gets the value of the closeddates property.
+     * Legt den Wert der managergroup-Eigenschaft fest.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the closeddates property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getCLOSEDDATES().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link XMLGregorianCalendar }
-     * 
-     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public List<XMLGregorianCalendar> getCLOSEDDATES() {
-        if (closeddates == null) {
-            closeddates = new ArrayList<XMLGregorianCalendar>();
-        }
-        return this.closeddates;
+    public void setMANAGERGROUP(String value) {
+        this.managergroup = value;
     }
 
     /**
-     * Gets the value of the requestorcompanies property.
+     * Ruft den Wert der affectedcustomers-Eigenschaft ab.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the requestorcompanies property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getREQUESTORCOMPANIES().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public List<String> getREQUESTORCOMPANIES() {
-        if (requestorcompanies == null) {
-            requestorcompanies = new ArrayList<String>();
-        }
-        return this.requestorcompanies;
+    public String getAFFECTEDCUSTOMERS() {
+        return affectedcustomers;
     }
 
     /**
-     * Gets the value of the siteidas property.
+     * Legt den Wert der affectedcustomers-Eigenschaft fest.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the siteidas property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getSITEIDAS().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public List<String> getSITEIDAS() {
-        if (siteidas == null) {
-            siteidas = new ArrayList<String>();
-        }
-        return this.siteidas;
+    public void setAFFECTEDCUSTOMERS(String value) {
+        this.affectedcustomers = value;
     }
 
     /**
-     * Gets the value of the siteidbs property.
+     * Ruft den Wert der scheduledstartdate-Eigenschaft ab.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the siteidbs property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getSITEIDBS().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public List<String> getSITEIDBS() {
-        if (siteidbs == null) {
-            siteidbs = new ArrayList<String>();
-        }
-        return this.siteidbs;
+    public Calendar getSCHEDULEDSTARTDATE() {
+        return scheduledstartdate;
     }
 
     /**
-     * Gets the value of the siteNames property.
+     * Legt den Wert der scheduledstartdate-Eigenschaft fest.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the siteNames property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getSITENames().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public List<String> getSITENames() {
-        if (siteNames == null) {
-            siteNames = new ArrayList<String>();
-        }
-        return this.siteNames;
+    public void setSCHEDULEDSTARTDATE(Calendar value) {
+        this.scheduledstartdate = value;
     }
 
     /**
-     * Gets the value of the serviceaffectings property.
+     * Ruft den Wert der actualstartdate-Eigenschaft ab.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the serviceaffectings property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getSERVICEAFFECTINGS().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public List<String> getSERVICEAFFECTINGS() {
-        if (serviceaffectings == null) {
-            serviceaffectings = new ArrayList<String>();
-        }
-        return this.serviceaffectings;
+    public Calendar getACTUALSTARTDATE() {
+        return actualstartdate;
     }
 
     /**
-     * Gets the value of the ischangesuccessfuls property.
+     * Legt den Wert der actualstartdate-Eigenschaft fest.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the ischangesuccessfuls property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getISCHANGESUCCESSFULS().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public List<String> getISCHANGESUCCESSFULS() {
-        if (ischangesuccessfuls == null) {
-            ischangesuccessfuls = new ArrayList<String>();
-        }
-        return this.ischangesuccessfuls;
+    public void setACTUALSTARTDATE(Calendar value) {
+        this.actualstartdate = value;
     }
 
     /**
-     * Gets the value of the releaseids property.
+     * Ruft den Wert der scheduledenddate-Eigenschaft ab.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the releaseids property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getRELEASEIDS().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public List<String> getRELEASEIDS() {
-        if (releaseids == null) {
-            releaseids = new ArrayList<String>();
-        }
-        return this.releaseids;
+    public Calendar getSCHEDULEDENDDATE() {
+        return scheduledenddate;
     }
 
     /**
-     * Gets the value of the releasetemplates property.
+     * Legt den Wert der scheduledenddate-Eigenschaft fest.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the Jakarta XML Binding object.
-     * This is why there is not a <CODE>set</CODE> method for the releasetemplates property.
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSCHEDULEDENDDATE(Calendar value) {
+        this.scheduledenddate = value;
+    }
+
+    /**
+     * Ruft den Wert der actualenddate-Eigenschaft ab.
      * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getRELEASETEMPLATES().add(newItem);
-     * </pre>
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Calendar getACTUALENDDATE() {
+        return actualenddate;
+    }
+
+    /**
+     * Legt den Wert der actualenddate-Eigenschaft fest.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setACTUALENDDATE(Calendar value) {
+        this.actualenddate = value;
+    }
+
+    /**
+     * Ruft den Wert der completeddate-Eigenschaft ab.
      * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Calendar getCOMPLETEDDATE() {
+        return completeddate;
+    }
+
+    /**
+     * Legt den Wert der completeddate-Eigenschaft fest.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCOMPLETEDDATE(Calendar value) {
+        this.completeddate = value;
+    }
+
+    /**
+     * Ruft den Wert der earlieststartdate-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Calendar getEARLIESTSTARTDATE() {
+        return earlieststartdate;
+    }
+
+    /**
+     * Legt den Wert der earlieststartdate-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setEARLIESTSTARTDATE(Calendar value) {
+        this.earlieststartdate = value;
+    }
+
+    /**
+     * Ruft den Wert der requestedstartdate-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Calendar getREQUESTEDSTARTDATE() {
+        return requestedstartdate;
+    }
+
+    /**
+     * Legt den Wert der requestedstartdate-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setREQUESTEDSTARTDATE(Calendar value) {
+        this.requestedstartdate = value;
+    }
+
+    /**
+     * Ruft den Wert der requestedenddate-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Calendar getREQUESTEDENDDATE() {
+        return requestedenddate;
+    }
+
+    /**
+     * Legt den Wert der requestedenddate-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setREQUESTEDENDDATE(Calendar value) {
+        this.requestedenddate = value;
+    }
+
+    /**
+     * Ruft den Wert der requestedsabegindate-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Calendar getREQUESTEDSABEGINDATE() {
+        return requestedsabegindate;
+    }
+
+    /**
+     * Legt den Wert der requestedsabegindate-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setREQUESTEDSABEGINDATE(Calendar value) {
+        this.requestedsabegindate = value;
+    }
+
+    /**
+     * Ruft den Wert der requestedsaenddate-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Calendar getREQUESTEDSAENDDATE() {
+        return requestedsaenddate;
+    }
+
+    /**
+     * Legt den Wert der requestedsaenddate-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setREQUESTEDSAENDDATE(Calendar value) {
+        this.requestedsaenddate = value;
+    }
+
+    /**
+     * Ruft den Wert der durationminutes-Eigenschaft ab.
      * 
      */
-    public List<String> getRELEASETEMPLATES() {
-        if (releasetemplates == null) {
-            releasetemplates = new ArrayList<String>();
-        }
-        return this.releasetemplates;
+    public int getDURATIONMINUTES() {
+        return durationminutes;
+    }
+
+    /**
+     * Legt den Wert der durationminutes-Eigenschaft fest.
+     * 
+     */
+    public void setDURATIONMINUTES(int value) {
+        this.durationminutes = value;
+    }
+
+    /**
+     * Ruft den Wert der submitdate-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getSUBMITDATE() {
+        return submitdate;
+    }
+
+    /**
+     * Legt den Wert der submitdate-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setSUBMITDATE(XMLGregorianCalendar value) {
+        this.submitdate = value;
+    }
+
+    /**
+     * Ruft den Wert der lastmodifieddate-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Calendar getLASTMODIFIEDDATE() {
+        return lastmodifieddate;
+    }
+
+    /**
+     * Legt den Wert der lastmodifieddate-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setLASTMODIFIEDDATE(Calendar value) {
+        this.lastmodifieddate = value;
+    }
+
+    /**
+     * Ruft den Wert der implementorcompany-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getIMPLEMENTORCOMPANY() {
+        return implementorcompany;
+    }
+
+    /**
+     * Legt den Wert der implementorcompany-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setIMPLEMENTORCOMPANY(String value) {
+        this.implementorcompany = value;
+    }
+
+    /**
+     * Ruft den Wert der implementororganization-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getIMPLEMENTORORGANIZATION() {
+        return implementororganization;
+    }
+
+    /**
+     * Legt den Wert der implementororganization-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setIMPLEMENTORORGANIZATION(String value) {
+        this.implementororganization = value;
+    }
+
+    /**
+     * Ruft den Wert der implementorgroup-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getIMPLEMENTORGROUP() {
+        return implementorgroup;
+    }
+
+    /**
+     * Legt den Wert der implementorgroup-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setIMPLEMENTORGROUP(String value) {
+        this.implementorgroup = value;
+    }
+
+    /**
+     * Ruft den Wert der customercompany-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getCUSTOMERCOMPANY() {
+        return customercompany;
+    }
+
+    /**
+     * Legt den Wert der customercompany-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCUSTOMERCOMPANY(String value) {
+        this.customercompany = value;
+    }
+
+    /**
+     * Ruft den Wert der failurereason-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getFAILUREREASON() {
+        return failurereason;
+    }
+
+    /**
+     * Legt den Wert der failurereason-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setFAILUREREASON(String value) {
+        this.failurereason = value;
+    }
+
+    /**
+     * Ruft den Wert der closeddate-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Calendar getCLOSEDDATE() {
+        return closeddate;
+    }
+
+    /**
+     * Legt den Wert der closeddate-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCLOSEDDATE(Calendar value) {
+        this.closeddate = value;
+    }
+
+    /**
+     * Ruft den Wert der requestorcompany-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getREQUESTORCOMPANY() {
+        return requestorcompany;
+    }
+
+    /**
+     * Legt den Wert der requestorcompany-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setREQUESTORCOMPANY(String value) {
+        this.requestorcompany = value;
+    }
+
+    /**
+     * Ruft den Wert der siteida-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSITEIDA() {
+        return siteida;
+    }
+
+    /**
+     * Legt den Wert der siteida-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSITEIDA(String value) {
+        this.siteida = value;
+    }
+
+    /**
+     * Ruft den Wert der siteidb-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSITEIDB() {
+        return siteidb;
+    }
+
+    /**
+     * Legt den Wert der siteidb-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSITEIDB(String value) {
+        this.siteidb = value;
+    }
+
+    /**
+     * Ruft den Wert der siteName-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSITEName() {
+        return siteName;
+    }
+
+    /**
+     * Legt den Wert der siteName-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSITEName(String value) {
+        this.siteName = value;
+    }
+
+    /**
+     * Ruft den Wert der serviceaffecting-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSERVICEAFFECTING() {
+        return serviceaffecting;
+    }
+
+    /**
+     * Legt den Wert der serviceaffecting-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSERVICEAFFECTING(String value) {
+        this.serviceaffecting = value;
+    }
+
+    /**
+     * Ruft den Wert der ischangesuccessful-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getISCHANGESUCCESSFUL() {
+        return ischangesuccessful;
+    }
+
+    /**
+     * Legt den Wert der ischangesuccessful-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setISCHANGESUCCESSFUL(String value) {
+        this.ischangesuccessful = value;
+    }
+
+    /**
+     * Ruft den Wert der releaseid-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getRELEASEID() {
+        return releaseid;
+    }
+
+    /**
+     * Legt den Wert der releaseid-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setRELEASEID(String value) {
+        this.releaseid = value;
+    }
+
+    /**
+     * Ruft den Wert der releasetemplate-Eigenschaft ab.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getRELEASETEMPLATE() {
+        return releasetemplate;
+    }
+
+    /**
+     * Legt den Wert der releasetemplate-Eigenschaft fest.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setRELEASETEMPLATE(String value) {
+        this.releasetemplate = value;
     }
 
 }
