@@ -17,17 +17,17 @@ import jakarta.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java-Klasse für TicketInfo complex type.
+ * <p>Java-Klasse für Response complex type.
  * 
  * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
  * 
  * <pre>
- * &lt;complexType name="TicketInfo"&gt;
+ * &lt;complexType name="Response"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="TransactionHeader" type="{http://server.talend.telefonica.de/}TransactionHeader"/&gt;
- *         &lt;element name="TransactionBody" type="{http://server.talend.telefonica.de/}TransactionBody"/&gt;
+ *         &lt;element name="Status" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="result-set" type="{http://server.talend.telefonica.de/}result-set"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -37,67 +37,67 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "TicketInfo", propOrder = {
-    "transactionHeader",
-    "transactionBody"
+@XmlType(name = "Response", propOrder = {
+    "status",
+    "resultSet"
 })
-@XmlRootElement(name = "TicketInfo")
-public class TicketInfo
+@XmlRootElement(name = "Response")
+public class Response
     implements Serializable
 {
 
     private final static long serialVersionUID = -1L;
-    @XmlElement(name = "TransactionHeader", required = true)
-    protected TransactionHeader transactionHeader;
-    @XmlElement(name = "TransactionBody", required = true)
-    protected TransactionBody transactionBody;
+    @XmlElement(name = "Status", required = true)
+    protected String status;
+    @XmlElement(name = "result-set", required = true)
+    protected ResultSet resultSet;
 
     /**
-     * Ruft den Wert der transactionHeader-Eigenschaft ab.
+     * Ruft den Wert der status-Eigenschaft ab.
      * 
      * @return
      *     possible object is
-     *     {@link TransactionHeader }
+     *     {@link String }
      *     
      */
-    public TransactionHeader getTransactionHeader() {
-        return transactionHeader;
+    public String getStatus() {
+        return status;
     }
 
     /**
-     * Legt den Wert der transactionHeader-Eigenschaft fest.
+     * Legt den Wert der status-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
-     *     {@link TransactionHeader }
+     *     {@link String }
      *     
      */
-    public void setTransactionHeader(TransactionHeader value) {
-        this.transactionHeader = value;
+    public void setStatus(String value) {
+        this.status = value;
     }
 
     /**
-     * Ruft den Wert der transactionBody-Eigenschaft ab.
+     * Ruft den Wert der resultSet-Eigenschaft ab.
      * 
      * @return
      *     possible object is
-     *     {@link TransactionBody }
+     *     {@link ResultSet }
      *     
      */
-    public TransactionBody getTransactionBody() {
-        return transactionBody;
+    public ResultSet getResultSet() {
+        return resultSet;
     }
 
     /**
-     * Legt den Wert der transactionBody-Eigenschaft fest.
+     * Legt den Wert der resultSet-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
-     *     {@link TransactionBody }
+     *     {@link ResultSet }
      *     
      */
-    public void setTransactionBody(TransactionBody value) {
-        this.transactionBody = value;
+    public void setResultSet(ResultSet value) {
+        this.resultSet = value;
     }
 
 }

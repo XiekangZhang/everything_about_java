@@ -95,4 +95,10 @@ class AppsoluteRouteTest {
         String groupListString = groupList.stream().collect(Collectors.joining(", "));
         System.out.println(groupListString);
     }
+
+    // functionality test
+    @Test
+    void FunctionTest() {
+
+    }
 }

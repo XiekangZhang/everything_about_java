@@ -2,7 +2,7 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2023.06.13 um 02:20:41 PM CEST 
+// Generiert: 2023.06.23 um 11:22:45 AM CEST 
 //
 
 
@@ -61,27 +61,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TicketResponseList }
+     * Create an instance of {@link Response }
      * 
      */
-    public TicketResponseList createTicketResponseList() {
-        return new TicketResponseList();
+    public Response createResponse() {
+        return new Response();
     }
 
     /**
-     * Create an instance of {@link TicketResponse }
+     * Create an instance of {@link ResultSet }
      * 
      */
-    public TicketResponse createTicketResponse() {
-        return new TicketResponse();
+    public ResultSet createResultSet() {
+        return new ResultSet();
     }
 
     /**
-     * Create an instance of {@link SupportGroup }
+     * Create an instance of {@link Column }
      * 
      */
-    public SupportGroup createSupportGroup() {
-        return new SupportGroup();
+    public Column createColumn() {
+        return new Column();
+    }
+
+    /**
+     * Create an instance of {@link Metadata }
+     * 
+     */
+    public Metadata createMetadata() {
+        return new Metadata();
     }
 
 }

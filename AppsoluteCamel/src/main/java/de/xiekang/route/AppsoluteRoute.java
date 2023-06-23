@@ -45,6 +45,7 @@ public class AppsoluteRoute extends RouteBuilder {
                 .process(new Processor() {
                     @Override
                     public void process(Exchange exchange) throws Exception {
+                        System.out.println(exchange.getIn().getHeader("operationName"));
                         JAXBContext jaxbContext = JAXBContext.newInstance(TicketInfo.class);
                         TicketInfo ticketInfo = (TicketInfo) jaxbContext.createUnmarshaller().unmarshal(
                                 new ByteArrayInputStream(exchange.getIn().getBody().toString().getBytes())

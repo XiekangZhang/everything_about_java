@@ -12,6 +12,8 @@
             <!-- todo: response -->
             <xsd:element name="ticketInfo" type="tns:TicketInfo"></xsd:element>
             <xsd:element name="ticketResponseList" type="tns:TicketResponseList"></xsd:element>
+            <xsd:element name="ticketCRQ" type="tns:TicketCRQ"></xsd:element>
+            <xsd:element name="ticketCRQResponseList" type="tns:TicketCRQResponseList"></xsd:element>
 
             <!-- request -->
             <xsd:complexType name="TicketInfo">
@@ -37,6 +39,20 @@
             <xsd:complexType name="SupportGroup">
                 <xsd:sequence>
                     <xsd:element name="supportGroup" type="xsd:string"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+
+            <!-- CRQ request -->
+            <xsd:complexType name="TicketCRQ">
+                <xsd:sequence>
+                    <xsd:element name="transactionHeader" type="tns:TransactionHeader"></xsd:element>
+                    <xsd:element name="transactionBody" type="tns:TransactionCRQBody"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+
+            <xsd:complexType name="TransactionCRQBody">
+                <xsd:sequence>
+                    <xsd:element name="infrastructureChangeId" type="xsd:string" minOccurs="0" maxOccurs="unbounded"></xsd:element>
                 </xsd:sequence>
             </xsd:complexType>
 
@@ -92,13 +108,36 @@
                     <xsd:element name="REQUESTOR_COMPANY" type="xsd:string"></xsd:element>
                     <xsd:element name="SITE_ID_A" type="xsd:string"></xsd:element>
                     <xsd:element name="SITE_ID_B" type="xsd:string"></xsd:element>
-                    <xsd:element name="SITE_Name" type="xsd:string"></xsd:element>
+                    <xsd:element name="SITE_NAME" type="xsd:string"></xsd:element>
                     <xsd:element name="SERVICE_AFFECTING" type="xsd:string"></xsd:element>
                     <xsd:element name="IS_CHANGE_SUCCESSFUL" type="xsd:string"></xsd:element>
                     <xsd:element name="RELEASE_ID" type="xsd:string"></xsd:element>
                     <xsd:element name="RELEASE_TEMPLATE" type="xsd:string"></xsd:element>
                 </xsd:sequence>
             </xsd:complexType>
+
+            <xsd:complexType name="TicketCRQResponseList">
+                <xsd:sequence>
+                    <xsd:element name="ticketCRQResponse" type="tns:TicketCRQResponse" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="TicketCRQResponse">
+                <xsd:sequence>
+                    <xsd:element name="WORK_LOG_ID" type="xsd:string"></xsd:element>
+                    <xsd:element name="INFRASTRUCTURE_CHANGE_ID" type="xsd:string"></xsd:element>
+                    <xsd:element name="DESCRIPTION" type="xsd:string"></xsd:element>
+                    <xsd:element name="DETAILED_DESCRIPTION" type="xsd:string"></xsd:element>
+                    <xsd:element name="COMMUNICATION_SOURCE" type="xsd:string"></xsd:element>
+                    <xsd:element name="WORK_LOG_TYPE" type="xsd:string"></xsd:element>
+                    <xsd:element name="VIEW_ACCESS" type="xsd:string"></xsd:element>
+                    <xsd:element name="WEATHERMAP_RELEVANT_CHG" type="xsd:string"></xsd:element>
+                    <xsd:element name="WEATHERMAP_LONGTERM_CHG" type="xsd:string"></xsd:element>
+                    <xsd:element name="WORK_LOG_SUBMIT_DATE" type="xsd:dateTime"></xsd:element>
+                    <xsd:element name="LAST_MODIFIED_DATE" type="xsd:dateTime"></xsd:element>
+                    <xsd:element name="WORK_LOG_DATE" type="xsd:dateTime"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+
         </xsd:schema>
     </types>
     <message name="getTicketInfo">
@@ -107,6 +146,14 @@
     <message name="getTicketInfoResponse">
         <part name="parameters" element="tns:ticketResponseList"/>
     </message>
+    <!-- 2nd API -->
+    <message name="getTicketCRQ">
+        <part name="parameters" element="tns:ticketCRQ"/>
+    </message>
+    <message name="getTicketCRQResponse">
+        <part name="parameters" element="tns:ticketCRQResponseList"/>
+    </message>
+
     <portType name="TransactionServer">
         <operation name="getTicketInfo">
             <input wsam:Action="http://server.talend.telefonica.de/TransactionServer/getTicketInfoRequest"
@@ -114,7 +161,15 @@
             <output wsam:Action="http://server.talend.telefonica.de/TransactionServer/getTicketInfoResponse"
                     message="tns:getTicketInfoResponse"/>
         </operation>
+        <!-- 2nd API -->
+        <operation name="getTicketCRQ">
+            <input wsam:Action="http://server.talend.telefonica.de/TransactionServer/getTicketCRQResponse"
+                   message="tns:getTicketCRQ"/>
+            <output wsam:Action="http://server.talend.telefonica.de/TransactionServer/getTicketCRQResponse"
+                    message="tns:getTicketCRQResponse"/>
+        </operation>
     </portType>
+
     <binding name="TransactionServerPortBinding" type="tns:TransactionServer">
         <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
         <operation name="getTicketInfo">
@@ -126,10 +181,19 @@
                 <soap:body use="literal"/>
             </output>
         </operation>
+        <operation name="getTicketCRQ">
+            <soap:operation soapAction=""/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
     </binding>
     <service name="TransactionServerService">
         <port name="TransactionServerPort" binding="tns:TransactionServerPortBinding">
-            <soap:address location="http://localhost:8040/services/appsolute"/>
+            <soap:address location="http://localhost:8040/services/appsolute/"/>
         </port>
     </service>
 

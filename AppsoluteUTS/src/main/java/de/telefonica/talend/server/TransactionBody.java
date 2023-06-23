@@ -2,13 +2,15 @@
 // Diese Datei wurde mit der Eclipse Implementation of JAXB, v3.0.0 generiert 
 // Siehe https://eclipse-ee4j.github.io/jaxb-ri 
 // Änderungen an dieser Datei gehen bei einer Neukompilierung des Quellschemas verloren. 
-// Generiert: 2023.06.13 um 02:20:41 PM CEST 
+// Generiert: 2023.06.23 um 11:22:45 AM CEST 
 //
 
 
 package de.telefonica.talend.server;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -24,9 +26,10 @@ import jakarta.xml.bind.annotation.XmlType;
  * &lt;complexType name="TransactionBody"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *       &lt;sequence&gt;
- *         &lt;element name="supportGroupList" type="{http://server.talend.telefonica.de/}SupportGroup"/&gt;
- *       &lt;/sequence&gt;
+ *       &lt;choice&gt;
+ *         &lt;element name="SupportGroupList" type="{http://server.talend.telefonica.de/}SupportGroup" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="TicketNumber" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *       &lt;/choice&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
@@ -36,38 +39,75 @@ import jakarta.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "TransactionBody", propOrder = {
-    "supportGroupList"
+    "ticketNumbers",
+    "supportGroupLists"
 })
 public class TransactionBody
     implements Serializable
 {
 
     private final static long serialVersionUID = -1L;
-    @XmlElement(required = true)
-    protected SupportGroup supportGroupList;
+    @XmlElement(name = "TicketNumber")
+    protected List<String> ticketNumbers;
+    @XmlElement(name = "SupportGroupList")
+    protected List<String> supportGroupLists;
 
     /**
-     * Ruft den Wert der supportGroupList-Eigenschaft ab.
+     * Gets the value of the ticketNumbers property.
      * 
-     * @return
-     *     possible object is
-     *     {@link SupportGroup }
-     *     
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a <CODE>set</CODE> method for the ticketNumbers property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getTicketNumbers().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link String }
+     * 
+     * 
      */
-    public SupportGroup getSupportGroupList() {
-        return supportGroupList;
+    public List<String> getTicketNumbers() {
+        if (ticketNumbers == null) {
+            ticketNumbers = new ArrayList<String>();
+        }
+        return this.ticketNumbers;
     }
 
     /**
-     * Legt den Wert der supportGroupList-Eigenschaft fest.
+     * Gets the value of the supportGroupLists property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link SupportGroup }
-     *     
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the Jakarta XML Binding object.
+     * This is why there is not a <CODE>set</CODE> method for the supportGroupLists property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getSupportGroupLists().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link String }
+     * 
+     * 
      */
-    public void setSupportGroupList(SupportGroup value) {
-        this.supportGroupList = value;
+    public List<String> getSupportGroupLists() {
+        if (supportGroupLists == null) {
+            supportGroupLists = new ArrayList<String>();
+        }
+        return this.supportGroupLists;
     }
 
 }

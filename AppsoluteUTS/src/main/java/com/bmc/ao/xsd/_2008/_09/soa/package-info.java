@@ -5,5 +5,5 @@
 // Generiert: 2023.06.23 um 11:22:45 AM CEST 
 //
 
-@jakarta.xml.bind.annotation.XmlSchema(namespace = "http://server.talend.telefonica.de/", elementFormDefault = jakarta.xml.bind.annotation.XmlNsForm.QUALIFIED)
-package de.telefonica.talend.server;
+@jakarta.xml.bind.annotation.XmlSchema(namespace = "http://bmc.com/ao/xsd/2008/09/soa", elementFormDefault = jakarta.xml.bind.annotation.XmlNsForm.QUALIFIED)
+package com.bmc.ao.xsd._2008._09.soa;
