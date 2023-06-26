@@ -1,20 +1,17 @@
 package de.telefonica.talend.server;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import de.telefonica.talend.utils.Utils;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Unmarshaller;
 import org.junit.jupiter.api.Test;
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 import javax.xml.xpath.XPathExpressionException;
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -44,7 +41,7 @@ class TicketInfoTest {
     }
 
     @Test
-    void TicketInfoMarshalTest() throws JAXBException, IOException, ParserConfigurationException, SAXException, XPathExpressionException {
+    void TicketInfoMarshalTest() throws JAXBException, IOException, ParserConfigurationException, SAXException, XPathExpressionException, TransformerException {
         String request =
                 "      <soa:executeProcess xmlns:soa=\"http://bmc.com/ao/xsd/2008/09/soa\">\n" +
                         "         <soa:gridName>UTSE2EGRID</soa:gridName>\n" +
@@ -64,6 +61,7 @@ class TicketInfoTest {
                         "                           </TransactionHeader>\n" +
                         "                           <TransactionBody>\n" +
                         "                                  <TicketNumber>INC000001761835</TicketNumber>\n" +
+                        "                                  <TicketNumber>INC000001761839</TicketNumber>\n" +
                         "                           </TransactionBody>\n" +
                         "                        </TicketInfo>\n" +
                         "                     </soa:XmlDoc>\n" +
@@ -78,10 +76,14 @@ class TicketInfoTest {
         factory.setNamespaceAware(true);
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document document = builder.parse(new ByteArrayInputStream(request.getBytes()));
-        StringBuilder stringBuilder = new StringBuilder();
-        System.out.println(Utils.parseXML(document, stringBuilder, "TicketInfo"));
+        String test = Utils.parseXML(document, "TicketInfo");
 
-
+        // 2nd: initialization
+        //String test = Utils.parseXML(document, "TicketInfo");
+        JAXBContext jaxbContext = JAXBContext.newInstance(TicketInfo.class);
+        Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+        TicketInfo ticketInfo = (TicketInfo) unmarshaller.unmarshal(new ByteArrayInputStream(test.getBytes()));
+        ticketInfo.getTransactionBody().getTicketNumbers().forEach(System.out::println);
     }
 
 }

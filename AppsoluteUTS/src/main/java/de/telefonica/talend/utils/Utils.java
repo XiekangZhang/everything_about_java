@@ -1,47 +1,68 @@
 package de.telefonica.talend.utils;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import com.bmc.ao.xsd._2008._09.soa.ExecuteProcessResponse;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.Marshaller;
+import jakarta.xml.bind.Unmarshaller;
+import org.w3c.dom.*;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.*;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class Utils {
+    // todo: think of error handling
+    public static String parseXML(Document document, String pattern) {
+        String extractedXML = extractXML(document, pattern);
+        StringWriter stringWriter = new StringWriter();
 
-    public static String parseXML(Document document, StringBuilder xmlString, String breakPoint) {
-        NodeList nodeList = document.getElementsByTagName("*");
-        for (int i = 0; i < nodeList.getLength(); i++) {
-            System.out.println(nodeList.item(i).getNodeName() + ": " + nodeList.item(i).getFirstChild().getNodeValue());
+        try {
+            Document newDocument = DocumentBuilderFactory.newInstance().newDocumentBuilder()
+                    .parse(new ByteArrayInputStream(extractedXML.getBytes()));
+            Element element = newDocument.getDocumentElement();
+            Attr attr = newDocument.createAttribute("xmlns");
+            attr.setValue("http://server.talend.telefonica.de/");
+            element.setAttributeNode(attr);
+
+            Transformer xform = TransformerFactory.newInstance().newTransformer();
+            xform.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
+            xform.transform(new DOMSource(newDocument.getFirstChild()), new StreamResult(stringWriter));
+        } catch (Exception e) {
+            throw new RuntimeException("Can not adding namespace");
         }
-        return null;
+        return stringWriter.toString();
     }
 
-    private static void parseImpl(NodeList nodeList, LinkedHashMap<String, Object> hashMap) {
-
-    }
-
-    public static String findAttrInNode(NodeList nodeList, StringBuilder jsonString) {
-        jsonString.append("{ \n");
-        for (int i = 0; i < nodeList.getLength(); i++) {
-            Node node = nodeList.item(i);
-            System.out.println(node.getNodeName());
-            NodeList childrenNodelist = node.getChildNodes();
-            if (childrenNodelist.getLength() - 1 == 0) {
-                jsonString.append(String.format("\t\"%s\": \"%s\", \n", node.getNodeName(), node.getFirstChild().getNodeValue()));
-            } else if (childrenNodelist.getLength() - 1 > 0) {
-                jsonString.append(String.format("\t\"%s\": \n", node.getNodeName()));
-                findAttrInNode(childrenNodelist, jsonString);
-                if (jsonString != null) {
-                    jsonString.append("\n}");
-                    return jsonString.toString();
-                }
-            }
+    private static String extractXML(Document document, String pattern) {
+        NodeList result = document.getElementsByTagName(pattern);
+        StringWriter stringWriter = new StringWriter();
+        try {
+            Transformer xform = TransformerFactory.newInstance().newTransformer();
+            xform.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
+            xform.transform(new DOMSource(result.item(0)), new StreamResult(stringWriter));
+        } catch (Exception e) {
+            throw new RuntimeException("Can not extract xml file");
         }
-        jsonString.replace(jsonString.toString().length() - 3, jsonString.toString().length() - 2, "");
-        jsonString.append("\n}");
-        return null;
+        return stringWriter.toString();
     }
 
+    public static void updateResponse(String exePath, String rawResponsePath) {
+        // todo: think of a good way --> xslt validation
+        try {
+            Path filePath = Path.of(exePath);
+            Path filePath2 = Path.of(rawResponsePath);
+            String content = Files.readString(filePath).replace("${placeholder}", Files.readString(filePath2));
+            BufferedWriter writer = new BufferedWriter(
+                    new FileWriter("C:\\dev\\workspace\\AppsoluteUTS\\src\\test\\resources\\full_response.xml"));
+            writer.write(content);
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

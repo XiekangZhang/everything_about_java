@@ -6,7 +6,7 @@
 //
 
 
-package com.bmc.ao.xsd._2008._09.soa;
+package de.telefonica.talend.server;
 
 import java.io.Serializable;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -17,17 +17,15 @@ import jakarta.xml.bind.annotation.XmlValue;
 
 
 /**
- * Common name content type that identifies an input/output parameter for any process description or execution.
- * 
- * <p>Java-Klasse für NameType complex type.
+ * <p>Java-Klasse für columnName complex type.
  * 
  * <p>Das folgende Schemafragment gibt den erwarteten Content an, der in dieser Klasse enthalten ist.
  * 
  * <pre>
- * &lt;complexType name="NameType"&gt;
+ * &lt;complexType name="columnName"&gt;
  *   &lt;simpleContent&gt;
  *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema&gt;string"&gt;
- *       &lt;attribute name="required" type="{http://www.w3.org/2001/XMLSchema}boolean" /&gt;
+ *       &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *     &lt;/extension&gt;
  *   &lt;/simpleContent&gt;
  * &lt;/complexType&gt;
@@ -36,18 +34,18 @@ import jakarta.xml.bind.annotation.XmlValue;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "NameType", propOrder = {
+@XmlType(name = "columnName", propOrder = {
     "value"
 })
-public class NameType
+public class ColumnName
     implements Serializable
 {
 
     private final static long serialVersionUID = -1L;
     @XmlValue
     protected String value;
-    @XmlAttribute(name = "required")
-    protected Boolean required;
+    @XmlAttribute(name = "name")
+    protected String name;
 
     /**
      * Ruft den Wert der value-Eigenschaft ab.
@@ -74,27 +72,27 @@ public class NameType
     }
 
     /**
-     * Ruft den Wert der required-Eigenschaft ab.
+     * Ruft den Wert der name-Eigenschaft ab.
      * 
      * @return
      *     possible object is
-     *     {@link Boolean }
+     *     {@link String }
      *     
      */
-    public Boolean isRequired() {
-        return required;
+    public String getName() {
+        return name;
     }
 
     /**
-     * Legt den Wert der required-Eigenschaft fest.
+     * Legt den Wert der name-Eigenschaft fest.
      * 
      * @param value
      *     allowed object is
-     *     {@link Boolean }
+     *     {@link String }
      *     
      */
-    public void setRequired(Boolean value) {
-        this.required = value;
+    public void setName(String value) {
+        this.name = value;
     }
 
 }

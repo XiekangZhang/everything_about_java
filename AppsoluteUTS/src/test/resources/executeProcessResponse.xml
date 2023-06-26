@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns1:executeProcessResponse xmlns:ns1="http://bmc.com/ao/xsd/2008/09/soa">
+    <ns1:Output>
+        <ns1:Output>
+            <ns1:Parameter>
+                <ns1:Name>soapResponse</ns1:Name>
+                <ns1:Value ns1:type="xs:anyType">
+                    <ns1:XmlDoc>${placeholder}</ns1:XmlDoc>
+                </ns1:Value>
+            </ns1:Parameter>
+        </ns1:Output>
+    </ns1:Output>
+</ns1:executeProcessResponse>
