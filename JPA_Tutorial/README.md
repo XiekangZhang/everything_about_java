@@ -20,5 +20,24 @@ and is not managed by any Session.
 - An entity is in a deleted state if Session.delete(entity) has been called, and the Session
 has marked the entity for deletion. 
 
-## JPA Entity Lifecycle Events
--
+## JPA Entity Lifecycle Events & annotations to handle the callbacks
+- callback methods are required to have a void return type
+- if any of our callbacks for persisting or removing an entity throw an exception, the transaction
+will be rolled back
+
+## JPA @Basic vs @Column
+- Attributes of the @Basic annotation are applied to JPA entities, whereas the attributes of 
+@Column are applied to the database columns
+- @Basic annotation's _optional_ attribute defines whether the entity field can be _null_ or not;
+on the other hand, @Column annotation's _nullable_ attribute specifies whether the corresponding
+database column can be _null_
+- we can use @Basic to indicate that a field should be lazily loaded
+- the @Column annotation allows us to specify the _name_ of the mapped database column
+
+## @Size, @Length, @Column(length = 10)
+- @Size: define the length of the field from an entity
+- @Length: use for hibernate
+- @Column(length = 10): use for JPA --> varchar(10)
+- @Column + @Size define the validation 
+
+## @Embedded and @Embeddable
