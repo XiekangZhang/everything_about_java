@@ -41,3 +41,5 @@ database column can be _null_
 - @Column + @Size define the validation 
 
 ## @Embedded and @Embeddable
+
+## JPA Attribute Converters
