@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 /**
@@ -75,7 +76,7 @@ public class DBUtils {
         StringBuilder query = new StringBuilder();
         List<String> colNames = Arrays.stream(user.getClass().getDeclaredFields()).
                 map(Field::getName).
-                filter(name -> !name.equalsIgnoreCase("id")).toList();
+                filter(name -> !name.equalsIgnoreCase("id")).collect(Collectors.toList());
         String colNamesStr = String.join(", ", colNames);
 
         List<String> values = colNames.stream().map(
@@ -89,7 +90,7 @@ public class DBUtils {
                         throw new RuntimeException(e);
                     }
                 }
-        ).toList();
+        ).collect(Collectors.toList());
 
         String valStr = "'" + String.join("', '", values) + "'";
 

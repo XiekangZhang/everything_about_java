@@ -21,6 +21,7 @@
         <module>oauth_tst</module>
         <module>oauth_impl</module>
         <module>soap_server</module>
+        <module>web_tutorial/web_tutorial</module>
     </modules>
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
