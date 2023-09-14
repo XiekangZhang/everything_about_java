@@ -43,3 +43,17 @@ database column can be _null_
 ## @Embedded and @Embeddable
 
 ## JPA Attribute Converters
+
+## Hibernate @NotNull vs @Column(nullable = false)
+- application.properties in spring boot project 
+- @NotNull: bean validation
+- @Column(nullable = false): JPA specification
+- Hibernate will translate the @NotNull annotation into the database constraints. We must then
+only make sure that _hibernate.validator.apply_to_ddl_ property is set to true.
+
+## Unique Constraints
+- A unique key is a set of single or multiple columns of a table that uniquely identify a 
+record in a database table.
+- We can have only one primary key constraint per table, but multiple unique constraints per
+table.
+- 
