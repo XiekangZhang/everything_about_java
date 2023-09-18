@@ -56,4 +56,8 @@ only make sure that _hibernate.validator.apply_to_ddl_ property is set to true.
 record in a database table.
 - We can have only one primary key constraint per table, but multiple unique constraints per
 table.
-- 
+- column-level constraints apply to a single column, whereas table-level constraints apply to
+the whole table. 
+- An entity in JPA represents a table stored in a database. Every instance of an entity represents
+a row in the table.
+- @UniqueConstraint vs @Column(unique = true)
