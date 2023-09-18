@@ -61,3 +61,11 @@ the whole table.
 - An entity in JPA represents a table stored in a database. Every instance of an entity represents
 a row in the table.
 - @UniqueConstraint vs @Column(unique = true)
+
+## JPA Entities and the Serializable Interface
+- Object serialization is the process of converting Java objects into byte streams. We can then
+transfer these byte streams over the wire or store them in persistent memory. 
+- Deserialization is the reverse process, where we take byte streams and convert them back into 
+Java objects.
+
+# Entity Relationships
