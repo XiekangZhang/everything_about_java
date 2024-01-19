@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>everything_about_xml</module>
+        <module>transformation</module>
         <module>java_basic</module>
         <module>java_jms</module>
         <module>java_zookeeper</module>
