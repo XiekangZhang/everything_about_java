@@ -25,6 +25,7 @@
         <module>AppsoluteCamel</module>
         <module>AppsoluteUTS</module>
         <module>JPA_Tutorial</module>
+        <module>JSON_Validation</module>
     </modules>
     <properties>
         <maven.compiler.source>11</maven.compiler.source>

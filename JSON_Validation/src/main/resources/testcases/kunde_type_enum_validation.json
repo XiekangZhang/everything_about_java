@@ -1,0 +1,14 @@
+{
+  "kunde": {
+    "typ": "",
+    "stammdaten": [
+      {
+        "adresse": [
+          {
+            "adresseTyp": " Lieferungsadresse | Rechnungsadresse"
+          }
+        ]
+      }
+    ]
+  }
+}

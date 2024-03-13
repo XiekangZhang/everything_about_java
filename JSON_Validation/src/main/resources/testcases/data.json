@@ -1,0 +1,51 @@
+{
+  "vermerken": {
+    "kontakt": {
+      "kontakttyp": "S",
+      "kontaktgrund": "Info",
+      "kontaktzeitpunkt": "2024-03-05T11:58:55.725Z",
+      "kontaktstatus": "Neu"
+    },
+    "rueckmeldung": {
+      "typ": "Post",
+      "details": [
+        {
+          "attribute": "strasse",
+          "wert": "Musterstrasse"
+        },
+        {
+          "attribute": "hausnummer",
+          "wert": "123"
+        },
+        {
+          "attribute": "postleitzahl",
+          "wert": "123"
+        },
+        {
+          "attribute": "ort",
+          "wert": "Musterort"
+        },
+        {
+          "attribute": "land",
+          "wert": "DE"
+        }
+      ]
+    },
+    "kundennummer": "123456789",
+    "debitornummer": "",
+    "kontaktperson": {
+      "anrede": "",
+      "titel": "",
+      "vorname": "",
+      "vorname2": "middle name",
+      "nachname": "",
+      "geburtsname": "",
+      "geburtsdatum": "1988-05-06",
+      "geburtsort": ""
+    },
+    "geraetenummer": "xxxxxxxxx",
+    "zaehlerNummer": "xxxxxx",
+    "notizart": "K",
+    "notizInhalt": "Something here"
+  }
+}
