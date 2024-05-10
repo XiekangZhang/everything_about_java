@@ -1,37 +1,44 @@
 import de.xiekang.talend.DataMasking;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.lang.Integer;
 
 public class Main {
     static Logger logger = Logger.getLogger(Main.class.getName());
 
     public static void main(String[] args) {
+
+        String mainKey = DataMasking.createRandomString(16);
+        String[] stringsTobeMasked = {"\"{\\\"WarningCode\\\": [ \\\"AEP0379\\\"]}\""};
+        logger.log(Level.WARNING, "main key: " + mainKey);
+
+
+        for (String s : stringsTobeMasked) {
+            logger.log(Level.WARNING, "original value: " + s);
+            String masked = DataMasking.encryptAESGCM(s, mainKey);
+            logger.log(Level.WARNING, "masked value: " + masked);
+            String unmasked = DataMasking.decryptAESGCM(masked, mainKey);
+            logger.log(Level.WARNING, "unmasked value: " + unmasked);
+            logger.log(Level.WARNING, "-----------------------------------");
+            //mainkey: 0WEwDTJIjPKURdOY
+            //[encrypted]5Fa4UbP84jNcBy2abkUwoRDQ5aJIkybYD59bPtlrnSGyEE67cwS1VnKBmGQkrdDoVZ1NmkLTcUqUzk8IW/e7LsEu1Q==
+            //[encrypted]MMTwvuu8T884/nphmqCvVj3r1Aj5NQvSumQWWv5yruZHmDH9TAM8J4qzgDqgh1033e4cA1Aq1RyA4atjDDtiEg==
+        }
+
+        String info = "xxxxxlL92HzloucSUprF3Jv4JmD3J7q3PQa6nE/59V7Du69eu9/w6m2YwMpk9lul2Stje9McMVagCF3JJyrHr0c6ulILGBz+eLAnheXT6A==";
+        String key = info.substring(0, 16);
+        String i = info.substring(16);
+        System.out.println(key + ": " + i);
+        logger.log(Level.WARNING,DataMasking.decryptAESGCM(i, key));
+
+
+
         /**
-         String mainKey = DataMasking.createRandomString(16);
-         String[] stringsTobeMasked = {"A1SADF3723", "c28a2641b3664a66bf01913d71abe73a"};
-         logger.log(Level.WARNING, "main key: " + mainKey);
-
-
-         for (String s : stringsTobeMasked) {
-         logger.log(Level.WARNING, "original value: " + s);
-         String masked = DataMasking.encryptAESGCM(s, mainKey);
-         logger.log(Level.WARNING, "masked value: " + masked);
-         String unmasked = DataMasking.decryptAESGCM(masked, mainKey);
-         logger.log(Level.WARNING, "unmasked value: " + unmasked);
-         logger.log(Level.WARNING, "-----------------------------------");
-         //mainkey: pHuIS9MhpnMvpXDm
-         //[encrypted]zw53BaK+FNg0KWurCRbQpv3Ls+ZKthquZnZyTbLm1knH1Kw1ZJzoB+sd
-         //[encrypted]MMTwvuu8T884/nphmqCvVj3r1Aj5NQvSumQWWv5yruZHmDH9TAM8J4qzgDqgh1033e4cA1Aq1RyA4atjDDtiEg==
-         }
-
          String endpoint = "V1/vertraege/%s/zaehlerstand/vorgangsdatum/%s";
          String.format("V1/vertraege/%s/zaehlerstand/vorgangsdatum/%s", "123", "2020-01-01".replaceAll("\"", ""));
 
@@ -43,6 +50,11 @@ public class Main {
         //logger.log(Level.WARNING, "matcher: " + matcher.matches());
         //test("lsjfisjelkfsjkljdkfjskdflsdfslkdfkjklfjkjslfjierowirjekljflksl\n lsjdfiweutjirsjglksjgkhsdjfajskljlkdjfksjdkfjskdllllllllllljkdjfsldkkkkkkkkkkkkkkkkkkkkkkkkkjff");
         //merge();
+        ArrayList<String> f = new ArrayList<>();
+        f.add("element 1");
+        //f.add("element 2");
+        System.out.println(f.stream().collect(Collectors.joining(", Änderung um ")));
+        HashMap<String, ArrayList<String>> t = new HashMap<>();
 
     }
 
@@ -65,6 +77,10 @@ public class Main {
         String two = "\"Data\": [ {\"Notiz\": \"Das ist eine Test Notiz. \"}, {\"Notiz\": \" Nur ein Kunde mit Vertrag kann ein Notiz erstellen. \"}, {\"Notiz\": \" Der Kunde ist zufrieden. \"}]";
         String merged = one.substring(0, one.lastIndexOf("}}")) + "," + two + one.substring(one.lastIndexOf("}}"));
         logger.log(Level.WARNING, "merged: " + merged);
+
+        String string = "\"{\\\"BonusbetragBrutto\\\":0.0,\\\"Mandant\\\":\\\"V\\\",\\\"Messlokation\\\":\\\"DExxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\\\",\\\"Zaehlernummer\\\":0,\\\"Zaehlerstand\\\":12345,\\\"BonusschablonenID\\\":0,\\\"Typ\\\":\\\"\\\",\\\"Messstellenbetreiber\\\":\\\"\\\",\\\"Ersatzwertbildungsgrund\\\":\\\"\\\",\\\"PreisAusENET\\\":\\\"J\\\",\\\"Ablesekennzeichen\\\":\\\"x\\\",\\\"Versorgungsart\\\":\\\"\\\",\\\"Netzbetreibernummer\\\":469,\\\"Ereignisdatum\\\":\\\"yyyy-MM-dd\\\",\\\"Lastprofil\\\":\\\"H0\\\",\\\"ObjektNummer\\\":\\\"9976 208 0021 01 0000\\\",\\\"Einspeiselieferant\\\":\\\"\\\",\\\"Energieart\\\":\\\"E\\\",\\\"Mehrwertsteuersatz\\\":0,\\\"Messdienstleister\\\":\\\"\\\",\\\"ProzessId\\\":227,\\\"Bezirk\\\":9976,\\\"EreignisdatumKey\\\":\\\"yyyy-MM-dd\\\",\\\"LetzteAenderung\\\":\\\"2024-04-23-15.24.18.531594\\\",\\\"VertragsID\\\":\\\"\\\",\\\"ZaehlerstandCheckbox\\\":false,\\\"unbart\\\":\\\"V\\\",\\\"LaufendeNummer\\\":0,\\\"konvertierteSatzart\\\":0}\"";
+        String test = "\"\\\"{\\\\\\\"BonusbetragBrutto\\\\\\\":0.0,\\\\\\\"Mandant\\\\\\\":\\\\\\\"V\\\\\\\",\\\\\\\"Messlokation\\\\\\\":\\\\\\\"DExxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\\\\\\\",\\\\\\\"Zaehlernummer\\\\\\\":0,\\\\\\\"Zaehlerstand\\\\\\\":12345,\\\\\\\"BonusschablonenID\\\\\\\":0,\\\\\\\"Typ\\\\\\\":\\\\\\\"\\\\\\\",\\\\\\\"Messstellenbetreiber\\\\\\\":\\\\\\\"\\\\\\\",\\\\\\\"Ersatzwertbildungsgrund\\\\\\\":\\\\\\\"\\\\\\\",\\\\\\\"PreisAusENET\\\\\\\":\\\\\\\"J\\\\\\\",\\\\\\\"Ablesekennzeichen\\\\\\\":\\\\\\\"x\\\\\\\",\\\\\\\"Versorgungsart\\\\\\\":\\\\\\\"\\\\\\\",\\\\\\\"Netzbetreibernummer\\\\\\\":469,\\\\\\\"Ereignisdatum\\\\\\\":\\\\\\\"yyyy-MM-dd\\\\\\\",\\\\\\\"Lastprofil\\\\\\\":\\\\\\\"H0\\\\\\\",\\\\\\\"ObjektNummer\\\\\\\":\\\\\\\"9976 208 0021 01 0000\\\\\\\",\\\\\\\"Einspeiselieferant\\\\\\\":\\\\\\\"\\\\\\\",\\\\\\\"Energieart\\\\\\\":\\\\\\\"E\\\\\\\",\\\\\\\"Mehrwertsteuersatz\\\\\\\":0,\\\\\\\"Messdienstleister\\\\\\\":\\\\\\\"\\\\\\\",\\\\\\\"ProzessId\\\\\\\":227,\\\\\\\"Bezirk\\\\\\\":9976,\\\\\\\"EreignisdatumKey\\\\\\\":\\\\\\\"yyyy-MM-dd\\\\\\\",\\\\\\\"LetzteAenderung\\\\\\\":\\\\\\\"2024-04-23-15.24.18.531594\\\\\\\",\\\\\\\"VertragsID\\\\\\\":\\\\\\\"\\\\\\\",\\\\\\\"ZaehlerstandCheckbox\\\\\\\":false,\\\\\\\"unbart\\\\\\\":\\\\\\\"V\\\\\\\",\\\\\\\"LaufendeNummer\\\\\\\":0,\\\\\\\"konvertierteSatzart\\\\\\\":0}\\\"\"";
     }
+
 
 }
