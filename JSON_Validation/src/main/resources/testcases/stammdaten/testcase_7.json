@@ -1,0 +1,14 @@
+{
+  "aenderungsfelder": [
+    "KontaktInfo",
+    "ObjektInfo",
+    "DebitorenInfo"
+  ],
+  "kundennummer": "123456789",
+  "kontakt": [
+    {
+      "typ": "Telefonnummer",
+      "kontaktdetails": "+49xxxxxxxxx"
+    }
+  ]
+}

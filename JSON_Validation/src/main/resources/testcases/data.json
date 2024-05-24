@@ -1,51 +1,75 @@
 {
-  "vermerken": {
-    "kontakt": {
-      "kontakttyp": "S",
-      "kontaktgrund": "Info",
-      "kontaktzeitpunkt": "2024-03-05T11:58:55.725Z",
-      "kontaktstatus": "Neu"
-    },
-    "rueckmeldung": {
-      "typ": "Post",
-      "details": [
-        {
-          "attribute": "strasse",
-          "wert": "Musterstrasse"
-        },
-        {
-          "attribute": "hausnummer",
-          "wert": "123"
-        },
-        {
-          "attribute": "postleitzahl",
-          "wert": "123"
-        },
-        {
-          "attribute": "ort",
-          "wert": "Musterort"
-        },
-        {
-          "attribute": "land",
-          "wert": "DE"
-        }
-      ]
-    },
-    "kundennummer": "123456789",
-    "debitornummer": "",
-    "kontaktperson": {
-      "anrede": "",
-      "titel": "",
-      "vorname": "",
-      "vorname2": "middle name",
-      "nachname": "",
-      "geburtsname": "",
-      "geburtsdatum": "1988-05-06",
-      "geburtsort": ""
-    },
-    "geraetenummer": "xxxxxxxxx",
-    "zaehlerNummer": "xxxxxx",
-    "notizart": "K",
-    "notizInhalt": "Something here"
+  "aenderungsfield": [
+    "KontaktInfo"
+  ],
+  "kundennummer": "123456789",
+  "letzteAenderung": "2024-04-05T08:28:26.852Z",
+  "something": "bbbbbb",
+  "kunde": {
+    "typ": "P",
+    "stammdaten": [
+      {
+        "anrede": "",
+        "titel": "",
+        "vorname": "",
+        "vorname2": "middle name",
+        "nachname": "",
+        "geburtsname": "",
+        "geburtsdatum": "1990-01-01",
+        "geburtsort": "",
+        "firmaName": "// name --> NatürlichePerson",
+        "zusatzinfo": "",
+        "gruendungsdatum": "yyyy-MM-dd",
+        "steuernummer": "",
+        "kontakt": [
+          {
+            "email": "xxx@web.de",
+            "telefonnummer": "+49 xxxxxx",
+            "festnetz": "+49201xxxxxx",
+            "fax": "xxxxxx"
+          }
+        ],
+        "adresse": [
+          {
+            "adresseTyp": "Rechnungsadresse",
+            "strasse": "Muster Str.",
+            "adresszusatz": "",
+            "hausnummer": 123,
+            "hausnummerzusatz": "B",
+            "postleitzahl": "12345",
+            "postfach": "",
+            "ort": "Berlin",
+            "ortsteil": "Schöneberg",
+            "land": "DE"
+          }
+        ]
+      }
+    ],
+    "kundenSonstigeAttribute": [
+      {
+        "attribute": "Sachbearbeiter",
+        "wert": 4154
+      },
+      {
+        "attribute": "Mandant",
+        "wert": "N|V"
+      },
+      {
+        "attribute": "WerbeInfoSperre",
+        "wert": "y"
+      },
+      {
+        "attribute": "Vorsteuerkennzeichen",
+        "wert": "K"
+      },
+      {
+        "attribute": "Mahnausschlusskennzeichen",
+        "wert": 0
+      },
+      {
+        "attribute": "KundenZusatzinfo",
+        "wert": "Textfeld fuer Kuden"
+      }
+    ]
   }
 }

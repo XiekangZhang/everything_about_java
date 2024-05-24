@@ -1,0 +1,12 @@
+{
+  "aenderungsfelder": [
+    "KontaktInfo"
+  ],
+  "kundennummer": "123456789",
+  "kontakt": [
+    {
+      "typ": "Telefonnummer"
+
+    }
+  ]
+}

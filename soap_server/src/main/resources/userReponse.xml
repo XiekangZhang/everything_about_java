@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<userResponse xmlns="/de/xiekang/model">
-    <id>1</id>
-    <name>test</name>
-    <gender>male</gender>
-    <created>2023-06-08T16:10:08.250+02:00</created>
-</userResponse>

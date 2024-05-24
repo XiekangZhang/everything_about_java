@@ -1,0 +1,9 @@
+{
+  "aenderungsfelder": [
+    "ObjektInfo"
+  ],
+  "kundennummer": "123456789",
+  "objekt": {
+    "adresse": {}
+  }
+}

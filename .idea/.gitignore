@@ -7,4 +7,5 @@
 # Editor-based HTTP Client requests
 /httpRequests/
 
-../out/
+../out/# GitHub Copilot persisted chat sessions
+/copilot/chatSessions
