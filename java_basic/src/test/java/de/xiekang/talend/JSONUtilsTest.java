@@ -1,6 +1,5 @@
 package de.xiekang.talend;
 
-import com.jayway.jsonpath.JsonPath;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -638,5 +637,32 @@ class JSONUtilsTest {
         String result = JSONUtils.convertListOfMaptoJSON(mapList);
         System.out.println(mapList);
         System.out.println(result);
+    }
+
+    @Test
+    void getFilterTest() {
+        List<Map<String, Object>> result = JSONUtils.JSONFilter(testJson, "$.xpds_responseBody[?(@.Satzart == 27)]");
+        System.out.println(result);
+        System.out.println(result.get(0).get("LetzteAenderung"));
+
+        String test = "{\n" +
+                "    \"kunden\": {\n" +
+                "        \"something\": {},\n" +
+                "        \"kundenSonstige\": [\n" +
+                "            {\n" +
+                "                \"attribute\": \"a1\",\n" +
+                "                \"wert\": \"12345\"\n" +
+                "            },\n" +
+                "            {\n" +
+                "                \"attribute\": \"a2\",\n" +
+                "                \"wert\": \"45678\"\n" +
+                "            }\n" +
+                "        ]\n" +
+                "    }\n" +
+                "}";
+
+        List<Map<String, Object>> result1 = JSONUtils.JSONFilter(test, "$.kunden.kundenSonstige[?(@.attribute == 'a2')]");
+        System.out.println(result1.get(0).get("wert"));
+        assertEquals("45678", result1.get(0).get("wert"));
     }
 }
