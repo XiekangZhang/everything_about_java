@@ -1,0 +1,82 @@
+{
+  "vertrag": {
+    "sparte": "STROM",
+    "vertragspartner": {
+      "kunden": {
+        "kundennummer": "xxxxxxxxx"
+      },
+      "zahlung": {
+        "debitornummer": "",
+        "abschlag": [
+          {
+            "betrag": 100.0,
+            "waehrung": "EUR",
+            "frist": "MONAT",
+            "faelligkeitsdatum": "2024-04-01"
+          }
+        ]
+      }
+    },
+    "vertragskonditionen": {
+      "kuendigungsfrist": {
+        "dauer": 12,
+        "einheit": "MONAT"
+      },
+      "vertragslaufzeit": {
+        "dauer": 12,
+        "einheit": "MONAT",
+        "startdatum": "2024-06-01"
+      },
+      "vertragsverlaengerung": {
+        "dauer": 12,
+        "einheit": "MONAT"
+      }
+    },
+    "verbrauchsstelle": {
+      "lieferbeginn": "2024-06-01",
+      "vertriebspartner": "",
+      "netzbetreiber": "",
+      "lastprofil": "H0",
+      "netznutzungProduktId": "",
+      "objektId": "123456798",
+      "zaehler": {
+        "zaehlernummer": "xxx",
+        "zaehlerstand": 12345,
+        "ablesekennzeichen": "",
+        "zaehlerpunkt": {
+          "marketlocation": {
+            "maloID": "17735154284",
+            "bilanzkreisKey": ""
+          }
+        }
+      }
+    },
+    "prognostizierterVerbrauch": [
+      {
+        "attribute": "KWH/JAHR",
+        "wert": 1500
+      }
+    ],
+    "tarif": {
+      "produktId": "",
+      "berechnungsparameter": {
+        "zusatzpreise": [
+          {
+            "kennzeichen": "",
+            "preistyp": ""
+          }
+        ]
+      }
+    }
+  },
+  "vertragSonstigeAttribute": [
+    {
+      "attribute": "kundenGruppenSchluessel",
+      "wert": "675"
+    },
+    {
+      "attribute": "abrechnungsgruppenId",
+      "wert": "Ablesung 30.01., Abrechnung 14.02."
+    }
+  ]
+}
