@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration xmlns="http://logging.apache.org/log4j/2.0/config" status="warn" monitorInterval="30" strict="true">
+    <Properties>
+        <Property name="filename">java_logging/src/main/resources/out.log</Property>
+    </Properties>
+    <Filter type="ThresholdFilter" level="trace"/>
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+        <Appender name="STDOUT" type="Console">
+            <Layout type="PatternLayout" pattern="%m MDC%X%n"/>
+            <Filters>
+                <Filter type="MarkerFilter" marker="FLOW" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <Filter type="MarkerFilter" marker="EXCEPTION" onMatch="DENY" onMismatch="ACCEPT"/>
+            </Filters>
+        </Appender>
+        <Appender type="Console" name="FLOW">
+            <Layout type="PatternLayout" pattern="%C{1}.%M %m %ex%n"/><!-- class and line number -->
+            <Filters>
+                <Filter type="MarkerFilter" marker="FLOW" onMatch="ACCEPT" onMismatch="NEUTRAL"/>
+                <Filter type="MarkerFilter" marker="EXCEPTION" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+        </Appender>
+        <Appender type="File" name="File" fileName="${filename}">
+            <Layout type="PatternLayout">
+                <Pattern>%d %p %C{1.} [%t] %m%n</Pattern>
+            </Layout>
+        </Appender>
+    </Appenders>
+    <Loggers>
+        <Logger name="de.xiekang.log4j.official.Bar" level="debug" additivity="false">
+            <!--<Filter type="ThreadContextMapFilter">
+                <KeyValuePair key="test" value="123"/>
+            </Filter>-->
+            <AppenderRef ref="STDOUT"/>
+            <AppenderRef ref="File"/>
+        </Logger>
+
+        <Root level="trace">
+            <AppenderRef ref="STDOUT"/>
+        </Root>
+    </Loggers>
+</Configuration>

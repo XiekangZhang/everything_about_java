@@ -5,12 +5,10 @@ import java.util.List;
 
 public class MyArray {
     public static void main(String[] args) {
-        List<Integer> list = new ArrayList<>();
-        list.add(1);
-        list.add(2);
-        list.add(3);
-
-        list.forEach(System.out::println);
+       String kundennummer = "123456789";
+       String energieArt = "E";
+       int satz = 123;
+        System.out.println(String.format("%s%s%09d", kundennummer, energieArt, satz));
     }
 }
 

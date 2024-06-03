@@ -777,7 +777,14 @@
           "type": "number"
         },
         "ablesekennzeichen": {
-          "type": "string"
+          "type": "string",
+          "enum": [
+            "Ablesung durch Kunden",
+            "telefonisch angegeben",
+            "Anfangszählerstand Neukunden",
+            "manuelle Schätzung",
+            "Schätzung durch Vertrieb"
+          ]
         },
         "zaehlertyp": {
           "type": "string"
@@ -855,7 +862,7 @@
                 "maloId": {
                   "type": "string"
                 },
-                "bilanzkreisKey": {
+                "bilanzKreisKey": {
                   "type": "string"
                 },
                 "messlokation": {
@@ -871,7 +878,7 @@
                 }
               },
               "required": [
-                "bilanzkreisKey"
+                "bilanzKreisKey"
               ]
             }
           },

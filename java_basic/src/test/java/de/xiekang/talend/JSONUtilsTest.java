@@ -665,4 +665,24 @@ class JSONUtilsTest {
         System.out.println(result1.get(0).get("wert"));
         assertEquals("45678", result1.get(0).get("wert"));
     }
+
+    @Test
+    void getFilterTest1() {
+        String vertragErstellenResponse = "{\n" +
+                "    \"metaList\": [\n" +
+                "        {\n" +
+                "            \"code\": \"na-tenantNA\",\n" +
+                "            \"message\": \"Schema WERK11 ist in Wartung\",\n" +
+                "            \"origin\": null,\n" +
+                "            \"referTo\": null,\n" +
+                "            \"referToData\": null,\n" +
+                "            \"type\": \"ACCESS_ERROR\"\n" +
+                "        }\n" +
+                "    ],\n" +
+                "    \"data\": null\n" +
+                "}\n";
+        List<Map<String, Object>> errorMessage = JSONUtils.JSONFilter(vertragErstellenResponse, "$.metaList[?(@.message != null)]");
+        if (!errorMessage.isEmpty())
+            System.out.println(errorMessage.get(0).get("message"));
+    }
 }
