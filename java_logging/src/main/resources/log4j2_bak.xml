@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration xmlns="http://logging.apache.org/log4j/2.0/config" status="warn" monitorInterval="30" strict="true">
+    <Properties>
+        <Property name="filename">java_logging/src/main/resources/out.log</Property>
+        <Property name="mylayout">classpath:MyLayout.json</Property>
+    </Properties>
+
+    <Filter type="ThresholdFilter" level="trace"/>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <!-- <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/> -->
+            <!-- <JsonTemplateLayout eventTemplateUri="classpath:EcsLayout.json"/> -->
+            <JsonTemplateLayout eventTemplateUri="classpath:GelfLayout.json">
+                <EventTemplateAdditionalField key="host" value="www.apache.org"/>
+                <EventTemplateAdditionalField key="_serviceName" value="auth-service"/>
+                <EventTemplateAdditionalField key="_containerId" value="6ede3f0ca7d9"/>
+            </JsonTemplateLayout>
+            <!-- <JsonTemplateLayout eventTemplateUri="classpath:LogstashJsonEventLayoutV1.json" /> -->
+            <!-- <JsonTemplateLayout eventTemplateUri="classpath:GcpLayout.json" /> -->
+            <!-- <JsonTemplateLayout eventTemplateUri="classpath:JsonLayout.json" /> -->
+            <!-- <JsonTemplateLayout eventTemplateUri="${mylayout}" /> -->
+        </Console>
+        <Appender name="STDOUT" type="Console">
+            <Layout type="PatternLayout" pattern="%m MDC%X%n"/>
+            <Filters>
+                <Filter type="MarkerFilter" marker="FLOW" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <Filter type="MarkerFilter" marker="EXCEPTION" onMatch="DENY" onMismatch="ACCEPT"/>
+            </Filters>
+        </Appender>
+        <Appender type="Console" name="FLOW">
+            <Layout type="PatternLayout" pattern="%C{1}.%M %m{lookups} %ex%n"/><!-- class and line number -->
+            <Filters>
+                <Filter type="MarkerFilter" marker="FLOW" onMatch="ACCEPT" onMismatch="NEUTRAL"/>
+                <Filter type="MarkerFilter" marker="EXCEPTION" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+        </Appender>
+        <Appender type="File" name="File" fileName="${filename}">
+            <Layout type="PatternLayout">
+                <Pattern>%d %p %C{1.} [%t] %m%n</Pattern>
+            </Layout>
+        </Appender>
+        <RollingFile name="json_file_appender" fileName="${log-path}/jsonlogger.json"
+                     filePattern="${log-path}/%d{yyyyMMdd}_jsonlogger-%i.json">
+            <JSONLayout complete="true" compact="false"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="1 KB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="4"/>
+        </RollingFile>
+
+    </Appenders>
+    <Loggers>
+        <Logger name="de.xiekang.log4j.official.Bar" level="debug" additivity="false">
+            <!--<Filter type="ThreadContextMapFilter">
+                <KeyValuePair key="test" value="123"/>
+            </Filter>-->
+            <!--<AppenderRef ref="STDOUT"/>-->
+            <AppenderRef ref="File"/>
+        </Logger>
+
+        <Root level="trace">
+            <!-- <AppenderRef ref="STDOUT"/> -->
+            <AppenderRef ref="Console"/>
+            <appender-ref ref="json_file_appender" />
+
+        </Root>
+    </Loggers>
+</Configuration>

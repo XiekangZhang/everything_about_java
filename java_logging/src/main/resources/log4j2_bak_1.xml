@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration >
+    <properties>
+        <property name="pid">${ctx:_pid}</property>
+        <property name="rootPid">${ctx:_rootPid}</property>
+        <property name="fatherPid">${ctx:_fatherPid}</property>
+        <property name="projectName"> ${ctx:_projectName} </property>
+        <property name="jobName">${ctx:_jobName}</property>
+    </properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%-5level] %d{HH:mm:ss} %logger{36}- %msg%n" />
+        </Console>
+        <RollingFile name="json_file_appender" fileName="${log-path}/jsonlogger.json" filePattern="${log-path}/%d{yyyyMMdd}_jsonlogger-%i.json">
+            <!-- <JsonLayout  compact="true" complete="true" objectMessageAsJsonObject="true"/> -->
+            <CustomLayout />
+            <Policies>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="1"/>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Root level="WARN">
+            <AppenderRef ref="Console" />
+        </Root>
+        <Logger name="de.xiekang.log4j.official" level="debug" additivity="false">
+            <AppenderRef ref="json_file_appender" />
+        </Logger>
+    </Loggers>
+</Configuration>

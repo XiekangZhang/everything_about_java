@@ -1,0 +1,13 @@
+{
+  "version": "1.0",
+  "level": {
+    "$resolver": "level",
+    "field": "name"
+  },
+  "1": {
+    "$resolver": "caseConverter",
+    "case": "lower",
+    "locale": "nl_NL",
+    "input": "${env:USER}"
+  }
+}

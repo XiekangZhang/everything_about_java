@@ -1,45 +1,57 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<Configuration xmlns="http://logging.apache.org/log4j/2.0/config" status="warn" monitorInterval="30" strict="true">
-    <Properties>
-        <Property name="filename">java_logging/src/main/resources/out.log</Property>
-    </Properties>
-    <Filter type="ThresholdFilter" level="trace"/>
-
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <properties>
+        <property name="pid">${ctx:_pid}</property>
+        <property name="rootPid">${ctx:_rootPid}</property>
+        <property name="fatherPid">${ctx:_fatherPid}</property>
+        <property name="projectName">${ctx:_projectName}</property>
+        <property name="jobName">${ctx:jobName}</property>
+        <property name="jobVersion">${ctx:jobVersion}</property>
+    </properties>
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+            <PatternLayout pattern="[%-5level] %d{HH:mm:ss} %logger{36}- %msg%n"/>
         </Console>
-        <Appender name="STDOUT" type="Console">
-            <Layout type="PatternLayout" pattern="%m MDC%X%n"/>
-            <Filters>
-                <Filter type="MarkerFilter" marker="FLOW" onMatch="DENY" onMismatch="NEUTRAL"/>
-                <Filter type="MarkerFilter" marker="EXCEPTION" onMatch="DENY" onMismatch="ACCEPT"/>
-            </Filters>
-        </Appender>
-        <Appender type="Console" name="FLOW">
-            <Layout type="PatternLayout" pattern="%C{1}.%M %m %ex%n"/><!-- class and line number -->
-            <Filters>
-                <Filter type="MarkerFilter" marker="FLOW" onMatch="ACCEPT" onMismatch="NEUTRAL"/>
-                <Filter type="MarkerFilter" marker="EXCEPTION" onMatch="ACCEPT" onMismatch="DENY"/>
-            </Filters>
-        </Appender>
-        <Appender type="File" name="File" fileName="${filename}">
-            <Layout type="PatternLayout">
-                <Pattern>%d %p %C{1.} [%t] %m%n</Pattern>
-            </Layout>
-        </Appender>
-    </Appenders>
-    <Loggers>
-        <Logger name="de.xiekang.log4j.official.Bar" level="debug" additivity="false">
-            <!--<Filter type="ThreadContextMapFilter">
-                <KeyValuePair key="test" value="123"/>
-            </Filter>-->
-            <AppenderRef ref="STDOUT"/>
-            <AppenderRef ref="File"/>
-        </Logger>
+        <RollingRandomAccessFile name="json_file_appender" fileName="/log/joblog.log"
+                                 filePattern="/log/%d{yyyyMMdd}_joblog-%i.log">
 
+            <PatternLayout
+                    pattern="[%-5level] - %d{HH:mm:ss} - [rootJob-${}]${projectName}_${jobName}_${jobVersion} - [subJob]%c{10} - %msg%n"
+            />
+            <!--
+            <JsonLayout complete="true">
+                <KeyValuePair key="pid" value="${pid}"/>
+                <KeyValuePair key="rootPid" value="${rootPid}"/>
+                <KeyValuePair key="fatherPid" value="${fatherPid}"/>
+                <KeyValuePair key="projectName" value="${projectName}"/>
+                <KeyValuePair key="jobName" value="${jobName}"/>
+                <KeyValuePair key="jobVersion" value="${jobVersion}"/>
+            </JsonLayout> -->
+            <Filters>
+
+                <DynamicThresholdFilter key="_projectName" defaultThreshold="INFO"
+                                        onMatch="ACCEPT" onMismatch="DENY">
+                    <KeyValuePair key="jobName" value="ERROR"/>
+                </DynamicThresholdFilter>
+
+                <ContextMapFilter onMatch="ACCEPT" onMismatch="DENY" operator="and">
+                    <KeyValuePair key="projectName" value="${ctx:projectName}"/>
+                    <KeyValuePair key="jobName" value="${ctx:jobName}" />
+                    <KeyValuePair key="jobVersion" value="${ctx:jobVersion}" />
+                </ContextMapFilter>
+
+            </Filters>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="1"/>
+        </RollingRandomAccessFile>
+    </Appenders>
+
+    <Loggers>
         <Root level="trace">
-            <AppenderRef ref="STDOUT"/>
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="json_file_appender"/>
         </Root>
     </Loggers>
 </Configuration>

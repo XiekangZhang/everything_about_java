@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <properties>
+        <property name="pid">${ctx:_pid}</property>
+        <property name="rootPid">${ctx:_rootPid}</property>
+        <property name="fatherPid">${ctx:_fatherPid}</property>
+        <property name="projectName">${ctx:_projectName}</property>
+        <property name="jobName">${ctx:_jobName}</property>
+    </properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%-5level] %d{HH:mm:ss} %logger{36}- %msg%n"/>
+        </Console>
+        <RollingRandomAccessFile name="RollingRandomAccessFile" fileName="logs/app.json" filePattern="logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.json.gz">
+            <GelfLayout includeThreadContext="true" threadContextIncludes="loginId,requestId">
+                <MessagePattern>%d %5p [%t] %c{1} %X{loginId, requestId} - %m%n</MessagePattern>
+                <KeyValuePair key="additionalField1" value="constant value"/>
+                <KeyValuePair key="additionalField2" value="$${ctx:key}"/>
+            </GelfLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="250 MB"/>
+            </Policies>
+        </RollingRandomAccessFile>
+        <RollingFile name="json_file_appender" fileName="${log-path}/jsonlogger.json"
+                     filePattern="${log-path}/%d{yyyyMMdd}_jsonlogger-%i.json">
+            <JSONLayout complete="true" compact="false">
+                <KeyValuePair key="projectName" value="${projectName}"/>
+                <KeyValuePair key="jobName" value="${jobName}"/>
+                <KeyValuePair key="pid" value="${pid}"/>
+                <KeyValuePair key="rootPid" value="${rootPid}"/>
+                <KeyValuePair key="fatherPid" value="${fatherPid}"/>
+            </JSONLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="1"/>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="de.xiekang.log4j.official.Bar" level="INFO" additivity="false">
+            <AppenderRef ref="RollingRandomAccessFile" />
+        </Logger>
+        <Root level="WARN">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="json_file_appender"/>
+        </Root>
+    </Loggers>
+</Configuration>
