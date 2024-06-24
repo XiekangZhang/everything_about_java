@@ -1,14 +1,26 @@
 package de.xiekang.talend;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class JSONUtils {
+
+    public static String convertJSONToString(String JSON, String JSONPath) {
+        DocumentContext documentContext = JsonPath.parse(JSON);
+        LinkedHashMap<String, Object> value = documentContext.read(JSONPath);
+        String newValue = "";
+        try {
+            newValue = new ObjectMapper().writeValueAsString(value);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return documentContext.set(JSONPath, newValue).jsonString();
+    }
 
     public static String convertListOfMaptoJSON(List<Map<String, Object>> JSON) {
         String result = "";
@@ -24,7 +36,8 @@ public class JSONUtils {
         List<Map<String, Object>> jsonStructure = new ArrayList<>();
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            jsonStructure = objectMapper.readValue(jsonString, List.class);
+            jsonStructure = objectMapper.readValue(jsonString, new TypeReference<List<Map<String, Object>>>() {
+            });
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -84,6 +97,4 @@ public class JSONUtils {
     public static List<Map<String, Object>> JSONFilter(String JSONString, String filter) {
         return JsonPath.read(JSONString, filter);
     }
-
-    // 
 }

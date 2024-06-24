@@ -1,0 +1,244 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "description": "Schema für Vertrag Kündigen",
+  "title": "Vertrag Kündigen",
+  "type": "object",
+  "properties": {
+    "vertrag": {
+      "type": "object",
+      "properties": {
+        "vertragsId": {
+          "type": "string"
+        },
+        "vertragskonditionen": {
+          "type": "object",
+          "properties": {
+            "vertragslaufzeit": {
+              "type": "object",
+              "properties": {
+                "enddatum": {
+                  "type": "string",
+                  "format": "date"
+                }
+              },
+              "required": [
+                "enddatum"
+              ]
+            }
+          },
+          "required": [
+            "vertragslaufzeit"
+          ]
+        },
+        "verbrauchsstelle": {
+          "type": "object",
+          "properties": {
+            "zaehler": {
+              "type": "object",
+              "properties": {
+                "zaehlerstand": {
+                  "type": "number"
+                },
+                "ablesekennzeichen": {
+                  "type": "string",
+                  "enum": [
+                    "Ablesung durch Kunden",
+                    "manuelle Schätzung",
+                    "telefonisch angegeben",
+                    "Schätzung durch Vertrieb"
+                  ]
+                }
+              },
+              "required": [
+                "zaehlerstand",
+                "ablesekennzeichen"
+              ]
+            },
+            "verbrauchsstellenHinweis": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "attribute": {
+                    "type": "string"
+                  },
+                  "wert": {
+                    "type": [
+                      "string",
+                      "number"
+                    ]
+                  }
+                },
+                "if": {
+                  "properties": {
+                    "attribute": {
+                      "const": "zaehlerverwendung"
+                    }
+                  },
+                  "required": ["attribute"]
+                },
+                "then": {
+                  "properties": {
+                    "wert": {
+                      "type": "string",
+                      "enum": [
+                        "Versorgungsobjekt",
+                        "Objekt für Geräte im Austausch",
+                        "Lager",
+                        "Reparaturfirma",
+                        "Schrottplatz",
+                        "umgebuchte Geräte",
+                        "Objekt für verkaufte Geräte"
+                      ]
+                    }
+                  },
+                  "required": ["wert"]
+                }
+              }
+            }
+          },
+          "required": [
+            "zaehler"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "vertragsId",
+        "vertragskonditionen",
+        "verbrauchsstelle"
+      ]
+    },
+    "vertragSonstigeAttribute": {
+      "type": "array",
+      "minItems": 1,
+      "contains": {
+        "properties": {
+          "attribute": {
+            "const": "abgangsart"
+          },
+          "wert": {
+            "type": "string",
+            "enum": [
+              "Aufhebung wegen Kundenauszug",
+              "Aufhebung wegen Stilllegung",
+              "Aufhebung wegen storniertem Vertragsverhältnis",
+              "Lieferende wegen Auszug",
+              "Lieferende wegen Umzug",
+              "Ende EV ohne Folgelieferung",
+              "Lieferende wegen Stilllegung",
+              "Netznutzung Abmelden",
+              "ohne Prozessstart",
+              "Vertragsaufhebung manuell"
+            ]
+          }
+        }
+      },
+      "items": {
+        "type": "object",
+        "properties": {
+          "attribute": {
+            "type": "string"
+          },
+          "wert": {
+            "type": [
+              "string",
+              "boolean",
+              "number"
+            ]
+          }
+        },
+        "if": {
+          "properties": {
+            "attribute": {
+              "const": "sperrkennzeichen"
+            }
+          },
+          "required": [
+            "attribute"
+          ]
+        },
+        "then": {
+          "properties": {
+            "wert": {
+              "type": "string",
+              "enum": [
+                "gesperrt",
+                "plombiert"
+              ]
+            }
+          },
+          "required": [
+            "wert"
+          ]
+        },
+        "else": {
+          "if": {
+            "properties": {
+              "attribute": {
+                "const": "abrechnungskennzeichen"
+              }
+            },
+            "required": [
+              "attribute"
+            ]
+          },
+          "then": {
+            "properties": {
+              "wert": {
+                "type": "string",
+                "enum": [
+                  "Leeranlage",
+                  "nicht schätzen",
+                  "keine vorzeitige Abrechnung (vom Programm gesetzt)",
+                  "keine vorzeitige Abrechnung",
+                  "keine Abrechnung"
+                ]
+              }
+            },
+            "required": [
+              "wert"
+            ]
+          },
+          "else": {
+            "if": {
+              "properties": {
+                "attribute": {
+                  "const": "einmaligerRgAusschluss"
+                }
+              },
+              "required": [
+                "attribute"
+              ]
+            },
+            "then": {
+              "properties": {
+                "wert": {
+                  "type": "string",
+                  "enum": [
+                    "Ausschluss maschinell prüfen",
+                    "kein einmaliger Ausschluss(manuell)",
+                    "einmaliger Ausschluss(maschinell)",
+                    "einmaliger Ausschluss(manuell)"
+                  ]
+                }
+              },
+              "required": [
+                "wert"
+              ]
+            }
+          }
+        },
+        "required": [
+          "attribute",
+          "wert"
+        ]
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "vertrag",
+    "vertragSonstigeAttribute"
+  ]
+}

@@ -1,5 +1,6 @@
 package de.xiekang.talend;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -684,5 +685,22 @@ class JSONUtilsTest {
         List<Map<String, Object>> errorMessage = JSONUtils.JSONFilter(vertragErstellenResponse, "$.metaList[?(@.message != null)]");
         if (!errorMessage.isEmpty())
             System.out.println(errorMessage.get(0).get("message"));
+    }
+
+    @Test
+    void convertJSONToString() {
+        String vertragErstellenResponse = "{\n" +
+                "    \"header\": {\n" +
+                "        \"meta\": \"\"\n" +
+                "    },\n" +
+                "    \"body\": {\n" +
+                "        \"columnsJson\": \"\",\n" +
+                "        \"userInputJson\": {\n" +
+                "            \"vertragsId\": \"690248283G000000023\",\n" +
+                "            \"ereignisdatum\": \"2024-06-21\"\n" +
+                "        }\n" +
+                "    }\n" +
+                "}";
+        System.out.println(JSONUtils.convertJSONToString(vertragErstellenResponse, "$.body.userInputJson"));
     }
 }
